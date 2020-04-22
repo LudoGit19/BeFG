@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Player;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -18,6 +19,12 @@ class PlayerRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Player::class);
     }
+
+    public function findAllWithPagination() : Query{
+        return $this->createQueryBuilder('p')
+        ->getQuery();
+    }
+
 
     // /**
     //  * @return Player[] Returns an array of Player objects

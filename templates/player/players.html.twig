@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Players{% endblock %}
+
+{% block monTitre %}Liste des joueurs{% endblock %}
+{% block body %}
+
+<div class="container">
+    <div class="row "> 
+        {%  for player in players %}
+            <div class="card-deck">
+                <div class="card ">
+                    <div class="card-body text-center">
+                        <p class="card-text">
+                            <!-- <img src="{#{{asset('images/teams/'~ player.team.image) }}#}" class="perso_imgPlayer img-fluid"> -->
+                            <h5 class="card-tittle">{{ player.fname }}</h5>
+                            <div>Nom : {{ player.lname }}</div>
+                            <div>Catégorie : {{ player.team.category }}</div>
+                        </p>                
+                    </div>
+                </div>    
+            </div>
+        {% endfor %}  
+    </div>
+</div>
+
+<div class="navigation">
+    {{ knp_pagination_render(players) }}
+</div>
+
+
+
+
+
+<!-- <div class="row "> 
+
+
+{#{%  for player in players %}
+    <div class="col-12 col-lg-6 p-1">
+        <div class="card mb-3">
+            <div class="row align-items-center p-2">
+                <div class="col-12 col-md-4">
+                    <!-- <img src="{#{{asset('images/'~ player.image) }}#}"> -->
+                <!-- </div>
+                <div class="col">
+                    <div="card-body"> -->
+                        <!-- <h5 class="card-tittle">{#{{ player.fname }}</h5>
+                        <p class"card-text">
+                            <div>Nom : {{ player.lname }}</div>
+                            <div>Catégorie : {{ player.team.category }}</div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+{#{% endfor %}#}
+<!-- </div> -->
+
+
+{% endblock %}

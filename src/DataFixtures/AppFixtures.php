@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Team;
+use App\Entity\Player;
 use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -38,9 +39,26 @@ class AppFixtures extends Fixture
         $manager->persist($team2);
 
         $team3 = new Team();
-        $team3->setName("A");
+        $team3->setName("C");
         $team3->setImage("team3.png");      
         $manager->persist($team3);
+
+        $teams = [$team1, $team2, $team3];
+
+        $faker = \Faker\Factory::create('fr_FR');
+        foreach ($teams as $t) { // générer des joueurs pour chaque équipe
+           $rand = rand(10, 12); // min 8 joueurs et max 12 joueurs = entre 24 et 36 joueurs 
+           for($i=1; $i <= $rand; $i++){
+               $player= new Player();
+               $player->setFname($faker->firstNameMale)
+                        ->setLname($faker->lastName)
+                        ->setPhone($faker->regexify("[0-9]{10}"))
+                        ->setMail($faker->email)
+                        ->setImage($faker->imageUrl($width = 640, $height = 480)) 
+                        ->setTeam($t);  
+                $manager->persist($player);  
+           }
+        }
 
         $manager->flush();
     }
