@@ -7,6 +7,11 @@
     list-style: none;
     box-sizing: border-box;
 }
+
+.navigation{
+    margin: auto;
+}
+
 body{
     font-family: 'Lato', sans-serif;
     position: relative;
@@ -35,8 +40,20 @@ img{
     object-fit: cover;
   }
 
+  /* Classe principale de la barre de navigation */
+.navbar-default {
+    /* Couleur de fond de la barre de navigation */
+    background-color: rgb(24, 42, 80);
+    border-color: rgb(24, 42, 80);
+   }
+/* Couleur des titres affichés dans la barre */
+.navbar-default .navbar-brand {
+    color: #fff;
+    font-family: 'Play', sans-serif
+   }   
 
 .nav-item::after{
+    font-family: 'Play', sans-serif;
     content:'';
     display:block;
     width:0px;
@@ -46,26 +63,40 @@ img{
     margin-top:-10px;
 }
 
-.nav-item:hover::after{width:100%;}
+.nav-item:hover::after{
+    font-family: 'Play', sans-serif;
+    width:100%;
+}
 
+.dropdown-item{
+    font-family: 'Play', sans-serif;
+}
 
-.nav-link{padding:15px 5px;transition:0.2s;}
+.nav-link{
+    font-family: 'Play', sans-serif;
+    padding:15px 5px;
+    transition:0.2s;
+}
 
 .navbar-nav .nav-link {
-    
-    color:rgb(24, 42, 80);
+    font-family: 'Play', sans-serif;
+    color:#fff;
     font-weight:bold;
     font-size:18px;
 }
 
-/* Css index.html.twig */
+/* Css accueil.html.twig */
 
 section {
     padding-top: 4rem;
     padding-bottom: 5rem;
     background-color: #f1f4fa;
 }
-.wrap {
+a:link {
+text-decoration:none;
+}
+
+.button {
     display: flex;
     background: white;
     padding: 1rem 1rem 1rem 1rem;
@@ -74,18 +105,18 @@ section {
     margin-bottom: 2rem;
 }
 
-.wrap:hover {
-    background: linear-gradient(135deg,#6394ff 0%,#0a193b 100%);
+.button:hover {
+    background: linear-gradient(135deg,#6394ff 0%,#1b294b 100%);
     color: white;
 }
 
-.ico-wrap {
+.ico-button {
     margin: auto;
 }
 
 .mbr-iconfont {
     font-size: 4.5rem !important;
-    color: #313131;
+    color: #142438;
     margin: 1rem;
     padding-right: 1rem;
 }

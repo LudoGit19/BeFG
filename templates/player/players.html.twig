@@ -6,27 +6,45 @@
 {% block body %}
 
 <div class="container">
-    <div class="row "> 
-        {%  for player in players %}
-            <div class="card-deck">
-                <div class="card ">
-                    <div class="card-body text-center">
-                        <p class="card-text">
-                            <!-- <img src="{#{{asset('images/teams/'~ player.team.image) }}#}" class="perso_imgPlayer img-fluid"> -->
-                            <h5 class="card-tittle">{{ player.fname }}</h5>
-                            <div>Nom : {{ player.lname }}</div>
-                            <div>Catégorie : {{ player.team.category }}</div>
-                        </p>                
-                    </div>
-                </div>    
+    {{ form_start (form) }}
+        <div class="row no-gutters align-items-center text-center">
+            <div class="col">            
+                {{ form_row(form.minYearOfBirth) }}
+            </div>    
+            <div class="col">        
+                {{ form_row(form.maxYearOfBirth) }}
             </div>
-        {% endfor %}  
-    </div>
+            <div class="col-4 ">        
+                <input type="submit" value="rechercher" class="btn btn-primary">
+            </div>
+        </div>            
+    {{ form_end (form) }}    
+</div>       
+
+<div class="container">
+        <div class="row "> 
+            {%  for player in players %}
+                <div class="card-deck">
+                    <div class="card ">
+                        <div class="card-body text-center">
+                            <p class="card-text">
+                                <!-- <img src="{#{{asset('images/teams/'~ player.team.image) }}#}" class="perso_imgPlayer img-fluid"> -->
+                                <h5 class="card-tittle">{{ player.fname }}</h5>
+                                <div>Nom : {{ player.lname }}</div>
+                                <div>Catégorie : {{ player.team.category }}</div>
+                                <div>Année : {{ player.yearOfBirth }}</div>
+                            </p>                
+                        </div>
+                    </div>    
+                </div>
+            {% endfor %}  
+        </div>
 </div>
 
-<div class="navigation">
-    {{ knp_pagination_render(players) }}
-</div>
+
+    <div class="navigation">
+        {{ knp_pagination_render(players) }}
+    </div>
 
 
 

@@ -3,9 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Player;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
+use App\Entity\SearchPlayer;
+use App\Form\SearchPlayerType;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Player|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,9 +22,18 @@ class PlayerRepository extends ServiceEntityRepository
         parent::__construct($registry, Player::class);
     }
 
-    public function findAllWithPagination() : Query{
-        return $this->createQueryBuilder('p')
-        ->getQuery();
+    public function findAllWithPagination(SearchPlayer $searchPlayer) : Query{
+        $req = $this->createQueryBuilder('p');
+        if($searchPlayer->getMinYearOfBirth()) {// est-ce que ma recherche n'est pas vide
+            $req = $req->andWhere('p.yearOfBirth > :min')
+            ->setParameter(':min', $searchPlayer->getMinYearOfBirth());            
+        }
+        if($searchPlayer->getMaxYearOfBirth()) {
+            $req = $req->andWhere('p.yearOfBirth < :max')
+            ->setParameter(':max', $searchPlayer->getMaxYearOfBirth());
+        } 
+
+        return $req->getQuery();
     }
 
 

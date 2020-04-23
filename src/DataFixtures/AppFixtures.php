@@ -54,7 +54,8 @@ class AppFixtures extends Fixture
                         ->setLname($faker->lastName)
                         ->setPhone($faker->regexify("[0-9]{10}"))
                         ->setMail($faker->email)
-                        ->setImage($faker->imageUrl($width = 640, $height = 480)) 
+                        ->setImage($faker->imageUrl($width = 640, $height = 480))
+                        ->setYearOfBirth($faker->year($max = 'now'))
                         ->setTeam($t);  
                 $manager->persist($player);  
            }

@@ -46,6 +46,11 @@ class Player
      */
     private $team;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $yearOfBirth;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +124,18 @@ class Player
     public function setTeam(?Team $team): self
     {
         $this->team = $team;
+
+        return $this;
+    }
+
+    public function getYearOfBirth(): ?string
+    {
+        return $this->yearOfBirth;
+    }
+
+    public function setYearOfBirth(string $yearOfBirth): self
+    {
+        $this->yearOfBirth = $yearOfBirth;
 
         return $this;
     }
