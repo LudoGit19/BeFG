@@ -17,7 +17,6 @@ class SearchPlayerType extends AbstractType
         $builder
             ->add('minYearOfBirth', IntegerType::class, [
                 "required" => false,
-                "label" => " de : ",
                 'attr' => [
                     'placeholder' => 'de...'
                 ],
@@ -25,7 +24,6 @@ class SearchPlayerType extends AbstractType
             ])
             ->add('maxYearOfBirth', IntegerType::class, [
                 "required" => false,
-                "label" => " à : ",
                 'attr' => [
                     'placeholder' => 'de...'
                 ],

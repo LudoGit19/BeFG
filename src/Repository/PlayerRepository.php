@@ -36,6 +36,22 @@ class PlayerRepository extends ServiceEntityRepository
         return $req->getQuery();
     }
 
+    // public function findAllGreaterThanPrice($price): array
+    // {
+    //     $entityManager = $this->getEntityManager();
+
+    //     $query = $entityManager->createQuery(
+    //         'SELECT p
+    //         FROM App\Entity\Product p
+    //         WHERE p.price > :price
+    //         ORDER BY p.price ASC'
+    //     )->setParameter('price', $price);
+
+    //     // returns an array of Product objects
+    //     return $query->getResult();
+    // }
+}
+
 
     // /**
     //  * @return Player[] Returns an array of Player objects
@@ -65,4 +81,4 @@ class PlayerRepository extends ServiceEntityRepository
         ;
     }
     */
-}
+

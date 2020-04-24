@@ -27,12 +27,13 @@ class PlayerController extends AbstractController
         $players =  $paginatorInterface->paginate(
             $repo->findAllWithPagination($searchPlayer), 
             $request->query->getInt('page', 1), /*page number*/
-            14 /*limit per page*/
+            8 /*limit per page*/
         );;
         
         return $this->render('player/players.html.twig', [
             "players" => $players,
-            "form"     => $form->createView()
+            "form"     => $form->createView(),
+            "admin"    => false
         ]);
     }
 }

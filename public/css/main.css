@@ -34,6 +34,10 @@ img{
     list-style: none;
 } 
 
+.card-header {
+    background-color: rgb(34, 16, 46);
+}
+
 .perso_imgPlayer{
     width: 100px;
     height: 70px;

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification d'un player{% endblock %}
+{% block monTitre %}Player {{ player.lname }}{% endblock %}
+
+{% block body %}
+{{form_start(form)}}
+<div class="row">
+    <div class="col-4 m-3">
+       {{form_widget(form)}}
+        <a href="{{ path('admin') }}" class="btn btn-primary">Retour</a>
+        <input type="submit" value="Valider" class="btn btn-success">
+
+{% endblock %}
