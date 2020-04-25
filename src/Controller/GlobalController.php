@@ -15,12 +15,21 @@ class GlobalController extends AbstractController
         return $this->render('global/accueil.html.twig');
     }
 
-      /**
+     /**
      * @Route("/menu", name="menu")
      */
     public function menu()
     {
         return $this->render('global/menu.html.twig');
     }
+
+    /**
+     * @Route("/registration", name="registration")
+     */
+    public function registration()
+    {
+       
+    }
+
 
 }

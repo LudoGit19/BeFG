@@ -10,7 +10,7 @@
 
 
         
-        <link rel="stylesheet" href="{{asset('css/main.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main1.css')}}">
         <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
 
@@ -24,16 +24,10 @@
     </head>
     <body> 
 
-
           <!-- https://bootsnipp.com => https://bootsnipp.com/snippets/vlXGB -->
 
-          <!-- <div class="container">
-            <div class="row">
-                <h2>Solution pour les clubs</h2>
-            </div> -->
-         
-            
-            <nav class="navbar rounded p-2 m-2 navbar-expand-lg navbar-default">
+            <!--  navbar-transparent -->
+            <nav class=" navbar sticky-top navbar rounded p-2 m-2 navbar-expand-lg navbar-default">
                 <a class="navbar-brand p-2 m-4" href="{{ path('accueil') }}">BeForGame</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -44,9 +38,6 @@
                         <li class="nav-item p-2">
                             <a class="nav-link" href="{{ path('accueil') }}">Home</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li> -->
                        
                         <li class="nav-item dropdown p-2">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,12 +63,18 @@
                             </div>
                         </li>
 
-                        {# <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                        <li class="nav-item dropdown p-2">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mon Compte
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('registration') }}">s'inscrire</a>
+                                
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#s">Administration</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li> #}
+
                         <li class="nav-item p-2">
                             <a class="nav-link btn btn-primary text-white" type="button" href="#" data-toggle="modal" data-target="#myModal">Sign In</a>                  
                         </li>
@@ -87,7 +84,6 @@
                     </ul>
              </div>
         </nav>       
-    
 
         <div class="container">
             <h1 class="text-dark text-center m-2 p-2 ">{% block monTitre %}{% endblock %}</h1>            

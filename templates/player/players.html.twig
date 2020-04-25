@@ -4,10 +4,15 @@
 
 {% block monTitre %}Liste des joueurs{% endblock %}
 {% block body %}
- 
-<div class="container">
-    {# <button type="button" class="btn btn-default btn-circle btn-lg"><i class="fa fa-check"></i> #}
-        <section class="formFilterbirthDate p-4">
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{message}}
+    </div>
+{% endfor %}
+
+<div class="container">   
+    <section class="formFilterbirthDate p-4">
         {{ form_start (form) }}
             <div class="row no-gutters align-items-center text-center">
                 <div class="col p-1">            
@@ -18,49 +23,64 @@
                 </div>
                 <div class="col-4 ">        
                     <input type="submit" value="rechercher" class="btn btn-info m-2 p-2">
-                    {% if admin %}
-                    <button class="btn btn-success btn-circle m-2 p-2" type="button" href="{{ path('creation_player') }}">Player  <i class="fa fa-plus"></i></button>
-                    {% endif %}
                 </div>
             </div>            
         {{ form_end (form) }} 
-       
-        </button>   
-  
-    
-        </section>    
-</div>       
-{# 
-<button type="button" class="btn btn-primary btn-circle"><i class="fa fa-list"></i> #}
+    </section>    
+</div>        
 
-<div class="center-block">
-    <div class="row "> 
-        {%  for player in players %}
-            <div class="card-deck m-4" style="width: 25rem; max-width: 30rem;">
-                <div class="card">
-                    <h5><div class="card-header text-center bg-default text-white">{{ player.fname }}</div></h5>
-                        <div class="card-body text-center">
-                            <p class="card-text">
-                                <!-- <img src="{#{{asset('images/teams/'~ player.team.image) }}#}" class="perso_imgPlayer img-fluid"> -->
-                                {# <h5 class="card-tittle">{{ player.fname }}</h5> #}
-                                <div>Nom : {{ player.lname }}</div>
-                                <div>Catégorie : {{ player.team.category }}</div>
-                                <div>Année : {{ player.yearOfBirth }}</div>
-                            </p>                
+<div class="container mt-4 ">    
+    <div class="table table-bordered">    
+        <table class="table table-hover">
+            <thead class="thead-light">
+                {% if admin %}                   
+                    <a href="{{ path('admin_ajout_player') }}" class="btn btn-success btn-xs pull-right mt-4"><b>+</b> Add Player</a>
+                    {% endif %}    
+                <tr>
+                    <th></th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Catégorie</th>
+                    <th>Année</th>
+                    <th>Role</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+                {%  for player in players %}
+                    <tr>
+                        <td>
+                            <div class="ckbox">
+                                <input type="checkbox" id="checkbox1">
+                                <label for="checkbox1"></label>
+                            </div>
+                        </td>
+                        <td><strong>{{ player.fname }}</strong></td>
+                        <td>{{ player.lname }}</td>
+                        <td>{{ player.team.category }}</td>
+                        <td>{{ player.yearOfBirth }}</td>
+                        <td>{{ player.lname }}</td>
+                        {% if admin %}
+                        <td>
+                            <div class="row">
+                                <a class='btn btn-info btn-xs m-1' href="{{ path('admin_modification_player', {'id' : player.id}) }}"><span class="glyphicon glyphicon-edit"></span>Edit</a> 
                             
-                        
-                            {% if admin %}
-                                <div class="row no-gutters">
-                                    <a class="col btn btn-primary text-white " type="button" href="{{ path('admin_player_modification', {'id' : player.id}) }}">Modifier</a>
-                                    <a class="col btn btn-danger text-white " type="button" href="#">Supprimer</a>  
-                                </div>
-                            {% endif %}
-                        </div>    
-                </div>    
-            </div>
-        {% endfor %}  
+                                <form method="POST" action="{{ path('admin_suppression_player', {'id' : player.id}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
+                                    <input type="hidden" name="_method" value="delete"> 
+                                    <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ player.id)}}"> 
+                                    <input type="submit" class="row btn btn-danger btn-xs m-1" value="X"> 
+                                </form>
+                            </div>
+                        </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}  
+        </table>
     </div>
 </div>
+
+               
+               
+          
 
 
 

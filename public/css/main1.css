@@ -32,11 +32,45 @@ img{
 }
  ul, ol{
     list-style: none;
-} 
-
-.card-header {
-    background-color: rgb(34, 16, 46);
 }
+
+/* Overlay avec hover sur une image en HTML/CSS */
+
+/* Conteneur principal */
+.overlay-image {
+    position: relative;
+    width: 10%;
+   }
+   /* Image originale */
+   .overlay-image .image {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: none;
+   }
+   /* Texte original */
+   .overlay-image .overimage {
+    width: 100%;
+    cursor: pointer;
+   }
+
+
+
+/* custom table Player */
+
+/* .custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    } */
+
+/* Taille image player */
 
 .perso_imgPlayer{
     width: 100px;

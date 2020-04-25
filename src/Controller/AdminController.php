@@ -30,7 +30,7 @@ class AdminController extends AbstractController
         $players =  $paginatorInterface->paginate(
             $repo->findAllWithPagination($searchPlayer), 
             $request->query->getInt('page', 1), /*page number*/
-            8 /*limit per page*/
+            16 /*limit per page*/
         );;
         
         return $this->render('player/players.html.twig', [
@@ -42,8 +42,8 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @route("admin/creation", name="creation_player")
-     * @Route("/admin/{id}", name="admin_player_modification")
+     * @route("admin/creation", name="admin_ajout_player")
+     * @Route("/admin/{id}", name="admin_modification_player", methods="GET|POST")
      */
 
     public function modifEtAjout(Player $player = null, Request $request, EntityManagerInterface $entityManager){
@@ -55,10 +55,10 @@ class AdminController extends AbstractController
         $form = $this->createForm(PlayerType::class, $player); // cette action lie le form ) l'objet $player      
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            // $modif = $player->getId() !== null;
+            $modif = $player->getId() !== null;
             $entityManager->persist($player);
             $entityManager->flush();
-            // $this->addFlash("success", ($modif) ? "La modification a été effectuée" : "L'ajout a été effectué");
+            $this->addFlash("success", ($modif) ? "La modification du joueur a été effectuée" : "L'ajout du joueur a été effectué");
             return $this->redirectToRoute("admin");
         }
 
@@ -68,5 +68,23 @@ class AdminController extends AbstractController
             // "isModification" => $player->getId() !== null
 
         ]);
+    }
+
+    
+
+     /**
+     * @Route("/admin/{id}", name="admin_suppression_player", methods="delete")
+     */
+
+    public function suppression(Player $player, Request $request, EntityManagerInterface $entityManager){
+
+        if($this->isCsrfTokenValid("SUP". $player->getId(),$request->get('_token'))){
+                   
+            $entityManager->remove($player);
+            $entityManager->flush();
+            $this->addFlash("success","La suppression a été effectuée");
+            return $this->redirectToRoute("admin");
+        }
+
     }
 }
