@@ -2,13 +2,22 @@
 
 {% block title %}Accueil{% endblock %}
 
-{% block monTitre %}Bien ouéj{% endblock %}
+{% block monTitre %}{% endblock %}
 {% block body %}
 
-<!-- <div class=" overlay-image ">
-        
-    <img class="image" src="{{ asset("images/other/technoCoffee.jpeg") }}">  
-        <div class="overImage"> -->
+{% for message in app.flashes('notice') %}
+    <div class="alert alert-success">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endfor %}
+
+
+   
+
+
 
         <section>
             <div class="container">
@@ -18,45 +27,47 @@
             
                         <div class="col-lg-6 mbr-col-md-10" >
 
-                            <a href="{{ path('menu') }}" class="button">                  
+                            <a href="{{ path('menu') }}" class="buttonMenu">                  
                                 <div class="ico-button">
-                                    <span class="mbr-iconfont fa-home fa"></span>
+                                    <i class="fas fa-home"></i>
                                 </div>
                                 <div class="text-button vcenter">
-                                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5" >Home</h2>
+                                    <h2 class="title3">Home</h2>
                                     <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                                 </div>
                             </a>                   
                         </div>
                         <div class="col-lg-6 mbr-col-md-10">
-                            <a href="{{ path('menu') }}" class="button">
+                            <a href="{{ path('menu') }}" class="buttonMenu">
                                 <div class="ico-button">
-                                    <span class="mbr-iconfont fa-calendar fa"></span>
+                                    <i class="fas fa-mouse"></i>
                                 </div>
                                 <div class="text-button vcenter">
-                                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Ma Team</h2>
+                                    <h2 class="title3">Ma Team</h2>
                                     <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                                 </div>
                             </a>
                         </div>
                         <div class="col-lg-6 mbr-col-md-10">
-                            <a href="{{ path('menu') }}" class="button">
+                            <a href="{{ path('menu') }}" class="buttonMenu">
                                 <div class="ico-button">
-                                    <span class="mbr-iconfont fa-user fa"></span>
+                                    <i class="far fa-address-book"></i>
+                                    <!-- <span class="mbr-iconfont fa-user fa"></span> -->
+
                                 </div>
                                 <div class="text-button vcenter">
-                                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Contact</h2>
+                                    <h2 class="title3">Contact</h2>
                                     <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                                 </div>
                             </a>
                         </div>
                         <div class="col-lg-6 mbr-col-md-10">
-                            <a href="{{ path('menu') }}" class="button">
+                            <a href="{{ path('menu') }}" class="buttonMenu">
                                 <div class="ico-button">
-                                    <span class="mbr-iconfont fa-futbol-o fa"></span>
+                                    <i class="far fa-futbol"></i>
                                 </div>
                                 <div class="text-button vcenter">
-                                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Convocations</h2>
+                                    <h2 class="title3">Convocations</h2>
                                     <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                                 </div>
                             </a>    

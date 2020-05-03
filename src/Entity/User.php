@@ -3,11 +3,18 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(
+ * fields = {"username"},
+ * message = "le user existe déjà !" )
  */
-class User
+class User implements UserInterface  
 {
     /**
      * @ORM\Id()
@@ -27,7 +34,8 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\EqualTo(propertyPath="password", message="Les mdp ne correspondent pas")
+     * 
      */
     private $checkPassword;
 
@@ -65,28 +73,50 @@ class User
         return $this;
     }
 
-    
-    public function getCheckPassword(): ?string
+
+    public function getRoles(): array
     {
-        return $this->password;
+        return [$this->roles];
     }
 
-    public function setCheckPassword(string $password): self
+    public function setRoles(?string $roles): self
     {
-        $this->password = $password;
+        if($roles === null) {
+            $this->roles= "ROLE_USER" ;
+        } else {
+            $this->roles = $roles;
+        }
 
         return $this;
     }
 
-    public function getRoles(): ?string
+    /**
+     * Get the value of checkPassword
+     */ 
+    public function getCheckPassword()
     {
-        return $this->roles;
+        return $this->checkPassword;
     }
 
-    public function setRoles(string $roles): self
+    /**
+     * Set the value of checkPassword
+     *
+     * @return  self
+     */ 
+    public function setCheckPassword($checkPassword)
     {
-        $this->roles = $roles;
+        $this->checkPassword = $checkPassword;
 
         return $this;
+    }
+
+    public function eraseCredentials()
+    {
+        
+    }
+
+    public function getSalt()
+    {
+        
     }
 }

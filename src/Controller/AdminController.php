@@ -42,7 +42,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @route("admin/creation", name="admin_ajout_player")
+     * @route("/admin/creation", name="admin_ajout_player")
      * @Route("/admin/{id}", name="admin_modification_player", methods="GET|POST")
      */
 
@@ -54,7 +54,8 @@ class AdminController extends AbstractController
 
         $form = $this->createForm(PlayerType::class, $player); // cette action lie le form ) l'objet $player      
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+
+        if($form->isSubmitted() && $form->isValid()){          
             $modif = $player->getId() !== null;
             $entityManager->persist($player);
             $entityManager->flush();

@@ -34,7 +34,7 @@
         <table class="table table-hover">
             <thead class="thead-light">
                 {% if admin %}                   
-                    <a href="{{ path('admin_ajout_player') }}" class="btn btn-success btn-xs pull-right mt-4"><b>+</b> Add Player</a>
+                    <a href="{{ path('admin_ajout_player') }}" class="btn btn-success btn-xs pull-left mt-4 mb-4"><i class="fas fa-plus"></i> Add Player</a>
                     {% endif %}    
                 <tr>
                     <th></th>
@@ -42,7 +42,7 @@
                     <th>Nom</th>
                     <th>Catégorie</th>
                     <th>Année</th>
-                    <th>Role</th>
+                    <!-- <th>Role</th> -->
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
@@ -54,20 +54,26 @@
                                 <label for="checkbox1"></label>
                             </div>
                         </td>
-                        <td><strong>{{ player.fname }}</strong></td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <td><a href="{{ path('admin_modification_player', {'id' : player.id}) }}"><strong>{{ player.fname }}</strong></a></td>
+                        {% else %}
+                        <td><strong>{{ player.fname }}</strong></td>                        
+                        {% endif %}
                         <td>{{ player.lname }}</td>
                         <td>{{ player.team.category }}</td>
                         <td>{{ player.yearOfBirth }}</td>
-                        <td>{{ player.lname }}</td>
-                        {% if admin %}
+                        <!-- <td>{#{{ player.role }}#}</td> -->
+                        {% if is_granted('ROLE_ADMIN') %}
                         <td>
                             <div class="row">
-                                <a class='btn btn-info btn-xs m-1' href="{{ path('admin_modification_player', {'id' : player.id}) }}"><span class="glyphicon glyphicon-edit"></span>Edit</a> 
+                                <!-- <a class='btn btn-info btn-xs m-1' href="#"><span class="glyphicon glyphicon-edit"></span>Edit</a>  -->
                             
                                 <form method="POST" action="{{ path('admin_suppression_player', {'id' : player.id}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
                                     <input type="hidden" name="_method" value="delete"> 
                                     <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ player.id)}}"> 
-                                    <input type="submit" class="row btn btn-danger btn-xs m-1" value="X"> 
+                                    <button>
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
                                 </form>
                             </div>
                         </td>

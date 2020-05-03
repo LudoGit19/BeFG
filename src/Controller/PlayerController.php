@@ -14,12 +14,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class PlayerController extends AbstractController
 {
     /**
-     * @Route("/member/players", name="players")
+     * @Route("/players", name="players")
      */
     public function index(PlayerRepository $repo, PaginatorInterface $paginatorInterface, Request $request)
 
     {
         $searchPlayer = new SearchPlayer(); 
+        // dd($searchPlayer);
         
         $form = $this->createForm(SearchPlayerType::class, $searchPlayer);
         $form->handleRequest($request);
@@ -27,7 +28,7 @@ class PlayerController extends AbstractController
         $players =  $paginatorInterface->paginate(
             $repo->findAllWithPagination($searchPlayer), 
             $request->query->getInt('page', 1), /*page number*/
-            8 /*limit per page*/
+            16 /*limit per page*/
         );;
         
         return $this->render('player/players.html.twig', [
@@ -36,4 +37,5 @@ class PlayerController extends AbstractController
             "admin"    => false
         ]);
     }
+
 }

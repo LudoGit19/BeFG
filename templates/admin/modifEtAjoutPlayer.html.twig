@@ -5,10 +5,15 @@
 
 {% block body %}
 {{form_start(form)}}
-<div class="row">
-    <div class="col-4 m-3">
-       {{form_widget(form)}}
-        <a href="{{ path('admin') }}" class="btn btn-primary">Retour</a>
-        <input type="submit" value="Valider" class="btn btn-success">
-
+    <div class="container">
+        <div class="row">
+            <div class="col-6 p-4 m-auto">
+            {{form_widget(form)}}
+                <a href="{{ path('admin') }}" class="btn btn-primary">Retour</a>
+                <input type="submit" value="Valider" class="btn btn-success">
+            </div>
+        </div>
+    </div>    
+{{form_end(form)}}
+       
 {% endblock %}

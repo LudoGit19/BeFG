@@ -1,0 +1,67 @@
+ <!-- https://bootsnipp.com => https://bootsnipp.com/snippets/vlXGB -->
+
+<!--  navbar-transparent -->
+<nav class=" navbar sticky-top navbar rounded p-2 m-2 navbar-expand-lg navbar-default">
+    <a class="navbar-brand p-2 m-4" href="{{ path('accueil') }}">BeForGame</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse p-4" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto topnav">
+            <li class="nav-item p-2">
+                <a class="nav-link" href="{{ path('accueil') }}">Home</a>
+            </li>            
+            <li class="nav-item dropdown p-2">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Players
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('players') }}">players</a>
+                        <div class="dropdown-divider"></div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="dropdown-item" href="{{ path('admin') }}">Administration</a>
+                    {% endif %}
+                </div>
+            </li>
+            <li class="nav-item dropdown p-2">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Convocations
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Catégories</a>
+                        <div class="dropdown-divider"></div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="dropdown-item" href="#">Administration</a>
+                    {% endif %}    
+                </div>
+            </li>
+            {% if not app.user %}
+            <li class="nav-item p-2">
+                <a class="nav-link  text-white" type="button" href="{{ path('registration') }}">s'incrire</a>                  
+            </li>                       
+            <li class="nav-item p-2">
+                <a class="nav-link btn btn-success text-white" type="button" href="{{ path('login') }}">Se connecter</a>                  
+            </li>
+            {% else %}
+            <li class="nav-item p-2">
+                <a class="nav-link btn btn-warning text-white" type="button" href="{{ path('logout') }}">Se déconnecter</a>                  
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>  
+
+<!-- notification flash "registration" -->
+<div class="container alerts mt-3">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-{{ message }} alert-dismissible show">  
+            {% for message in message %}
+            {{ message }} 
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            {% endfor %}     
+        </div>
+    {% endfor %} 
+</div>
+

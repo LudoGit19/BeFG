@@ -25,11 +25,11 @@ class PlayerRepository extends ServiceEntityRepository
     public function findAllWithPagination(SearchPlayer $searchPlayer) : Query{
         $req = $this->createQueryBuilder('p');
         if($searchPlayer->getMinYearOfBirth()) {// est-ce que ma recherche n'est pas vide
-            $req = $req->andWhere('p.yearOfBirth > :min')
+            $req = $req->andWhere('p.yearOfBirth >= :min')
             ->setParameter(':min', $searchPlayer->getMinYearOfBirth());            
         }
         if($searchPlayer->getMaxYearOfBirth()) {
-            $req = $req->andWhere('p.yearOfBirth < :max')
+            $req = $req->andWhere('p.yearOfBirth <= :max')
             ->setParameter(':max', $searchPlayer->getMaxYearOfBirth());
         } 
 
