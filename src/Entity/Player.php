@@ -3,9 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PlayerRepository")
+ * @Vich\Uploadable
  */
 class Player
 {
@@ -40,6 +44,14 @@ class Player
      * @ORM\Column(type="string", length=255)
      */
     private $image;
+
+
+     /**
+     * @Vich\UploadableField(mapping="player_image", fileNameProperty="image")
+     */
+    private $imageFile;
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Team", inversedBy="joueurs")
@@ -109,12 +121,36 @@ class Player
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
         return $this;
     }
+
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
+
+
+    public function setImageFile(?File $imageFile = null): self
+    {
+        $this->imageFile = $imageFile;
+        
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updated_at = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+
 
     public function getTeam(): ?Team
     {
@@ -136,6 +172,18 @@ class Player
     public function setYearOfBirth(string $yearOfBirth): self
     {
         $this->yearOfBirth = $yearOfBirth;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }

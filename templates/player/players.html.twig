@@ -30,7 +30,10 @@
 </div>        
 
 <div class="container mt-4 ">    
-    <div class="table table-bordered">    
+    <div class="table table-bordered">   
+<p>Tapez quelque chose dans le champ de saisie pour rechercher dans le tableau les prénoms, noms de famille ou année:</p>  
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>    
         <table class="table table-hover">
             <thead class="thead-light">
                 {% if admin %}                   
@@ -38,6 +41,7 @@
                     {% endif %}    
                 <tr>
                     <th></th>
+                    <th>Photo</th>
                     <th>Prénom</th>
                     <th>Nom</th>
                     <th>Catégorie</th>
@@ -46,7 +50,9 @@
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
+            <tbody id="myTable">
                 {%  for player in players %}
+
                     <tr>
                         <td>
                             <div class="ckbox">
@@ -54,6 +60,7 @@
                                 <label for="checkbox1"></label>
                             </div>
                         </td>
+                        <td><img src="{{ asset('images/players/' ~ player.image) }}" class="perso_imgPlayer img-fluid"></td>
                         {% if is_granted('ROLE_ADMIN') %}
                         <td><a href="{{ path('admin_modification_player', {'id' : player.id}) }}"><strong>{{ player.fname }}</strong></a></td>
                         {% else %}
@@ -79,7 +86,8 @@
                         </td>
                         {% endif %}
                     </tr>
-                {% endfor %}  
+                {% endfor %} 
+            </tbody>     
         </table>
     </div>
 </div>
