@@ -35,7 +35,7 @@ class GlobalController extends AbstractController  // render, redirectToRoute
     public function registration(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
         $user = new User();
-
+        
         $form = $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
 
@@ -79,4 +79,5 @@ class GlobalController extends AbstractController  // render, redirectToRoute
 
 
     }
+    
 }

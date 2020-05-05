@@ -3,9 +3,13 @@
 namespace App\DataFixtures;
 
 use App\Entity\Team;
+use App\Entity\Event;
 use App\Entity\Player;
 use App\Entity\Category;
+use App\Entity\Status;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\EventArgs;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
@@ -56,11 +60,13 @@ class AppFixtures extends Fixture
                         ->setMail($faker->email)
                         ->setImage($faker->imageUrl($width = 640, $height = 480))
                         ->setYearOfBirth($faker->year($max = 'now'))
+                        ->setUpdatedAt($faker->dateTime())
                         ->setTeam($t);  
                 $manager->persist($player);  
            }
         }
 
         $manager->flush();
+
     }
 }

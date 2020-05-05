@@ -21,9 +21,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ path('players') }}">players</a>
                         <div class="dropdown-divider"></div>
-                    {#{% if is_granted('ROLE_ADMIN') %} #}
+                    {% if is_granted('ROLE_ADMIN') %} 
                         <a class="dropdown-item" href="{{ path('admin') }}">Administration</a>
-                    {#{% endif %}#}
+                    {% endif %}
                 </div>
             </li>
             <li class="nav-item dropdown p-2">
@@ -31,10 +31,12 @@
                     Convocations
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Catégories</a>
+                    <a class="dropdown-item" href="#">Evènements</a>
                         <div class="dropdown-divider"></div>
+                    <!-- <a class="dropdown-item" href="#">Catégories</a>
+                        <div class="dropdown-divider"></div> -->
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a class="dropdown-item" href="#">Administration</a>
+                        <a class="dropdown-item" href="{{ path('events') }}">Administration</a>
                     {% endif %}    
                 </div>
             </li>
