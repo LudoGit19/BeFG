@@ -4,97 +4,99 @@
 
 {% block monTitre %}Liste des joueurs{% endblock %}
 {% block body %}
+<section>
 
-{% for message in app.flashes('success') %}
-    <div class="alert alert-success">
-        {{message}}
-    </div>
-{% endfor %}
-<div class="content">
-    <div class="container">   
-        <section class="formFilterbirthDate p-4">
-            {{ form_start (form) }}
-                <div class="row no-gutters align-items-center text-center">
-                    <div class="col p-1">            
-                        {{ form_row(form.minYearOfBirth) }}
-                    </div>    
-                    <div class="col p-1">        
-                        {{ form_row(form.maxYearOfBirth) }}
-                    </div>
-                    <div class="col-4 ">        
-                        <input type="submit" value="rechercher" class="btn btn-info m-2 p-2">
-                    </div>
-                </div>            
-            {{ form_end (form) }} 
-        </section>    
-    </div>        
+    <div class="content">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{message}}
+            </div>
+        {% endfor %}
+        <div class="container">   
+            <div class="formFilterbirthDate p-4">
+                {{ form_start (form) }}
+                    <div class="row no-gutters align-items-center text-center">
+                        <div class="col p-1">            
+                            {{ form_row(form.minYearOfBirth) }}
+                        </div>    
+                        <div class="col p-1">        
+                            {{ form_row(form.maxYearOfBirth) }}
+                        </div>
+                        <div class="col-4 ">        
+                            <input type="submit" value="rechercher" class="btn btn-info m-2 p-2">
+                        </div>
+                    </div>            
+                {{ form_end (form) }} 
+            </div>    
+        </div>        
 
-    <div class="container">    
-        <div class="table table-bordered">   
-    <p>Tapez quelque chose dans le champ de saisie pour rechercher dans le tableau les prénoms, noms de famille ou année:</p>  
-    <input id="myInput" type="text" placeholder="Search..">
-    <br><br>    
-            <table class="table table-hover">
-                <thead class="thead-light">
-                    {% if admin %}                   
-                        <a href="{{ path('admin_ajout_player') }}" class="btn btn-success btn-xs pull-left mt-4 mb-4"><i class="fas fa-plus"></i> Add Player</a>
-                        {% endif %}    
-                    <tr>
-                        <th></th>
-                        <th>Photo</th>
-                        <th>Prénom</th>
-                        <th>Nom</th>
-                        <th>Catégorie</th>
-                        <th>Année</th>
-                        <!-- <th>Role</th> -->
-                        <th class="text-center">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="myTable">
-                    {%  for player in players %}
-
+        <div class="container">    
+            <div class="table table-bordered">   
+        <p>Tapez quelque chose dans le champ de saisie pour rechercher dans le tableau les prénoms, noms de famille ou année:</p>  
+        <input id="myInput" type="text" placeholder="Search..">
+        <br><br>    
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        {% if admin %}                   
+                            <a href="{{ path('admin_ajout_player') }}" class="btn btn-success btn-xs pull-left mt-4 mb-4"><i class="fas fa-plus"></i> Add Player</a>
+                            {% endif %}    
                         <tr>
-                            <td>
-                                <div class="ckbox">
-                                    <input type="checkbox" id="checkbox1">
-                                    <label for="checkbox1"></label>
-                                </div>
-                            </td>
-                            <td><img src="{{ asset('images/players/' ~ player.image) }}" class="perso_imgPlayer img-fluid"></td>
-                            {% if is_granted('ROLE_ADMIN') %}
-                            <td><a href="{{ path('admin_modification_player', {'id' : player.id}) }}"><strong>{{ player.fname }}</strong></a></td>
-                            {% else %}
-                            <td><strong>{{ player.fname }}</strong></td>                        
-                            {% endif %}
-                            <td>{{ player.lname }}</td>
-                            <td>{{ player.team.category }}</td>
-                            <td>{{ player.yearOfBirth }}</td>
-                            <!-- <td>{#{{ player.role }}#}</td> -->
-                            {% if is_granted('ROLE_ADMIN') %}
-                            <td>
-                                <div class="row">
-                                    <!-- <a class='btn btn-info btn-xs m-1' href="#"><span class="glyphicon glyphicon-edit"></span>Edit</a>  -->
-                                
-                                    <form method="POST" action="{{ path('admin_suppression_player', {'id' : player.id}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
-                                        <input type="hidden" name="_method" value="delete"> 
-                                        <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ player.id)}}"> 
-                                        <button>
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                            {% endif %}
+                            <th></th>
+                            <th>Photo</th>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Catégorie</th>
+                            <th>Année</th>
+                            <!-- <th>Role</th> -->
+                            <th class="text-center">Action</th>
                         </tr>
-                    {% endfor %} 
-                </tbody>     
-            </table>
+                    </thead>
+                    <tbody id="myTable">
+                        {%  for player in players %}
+
+                            <tr>
+                                <td>
+                                    <div class="ckbox">
+                                        <input type="checkbox" id="checkbox1">
+                                        <label for="checkbox1"></label>
+                                    </div>
+                                </td>
+                                <td><img src="{{ asset('images/players/' ~ player.image) }}" class="perso_imgPlayer img-fluid"></td>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <td><a href="{{ path('admin_modification_player', {'id' : player.id}) }}"><strong>{{ player.fname }}</strong></a></td>
+                                {% else %}
+                                <td><strong>{{ player.fname }}</strong></td>                        
+                                {% endif %}
+                                <td>{{ player.lname }}</td>
+                                <td>{{ player.team.category }}</td>
+                                <td>{{ player.yearOfBirth }}</td>
+                                <!-- <td>{#{{ player.role }}#}</td> -->
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <td>
+                                    <div class="row">
+                                        <!-- <a class='btn btn-info btn-xs m-1' href="#"><span class="glyphicon glyphicon-edit"></span>Edit</a>  -->
+                                    
+                                        <form method="POST" action="{{ path('admin_suppression_player', {'id' : player.id}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
+                                            <input type="hidden" name="_method" value="delete"> 
+                                            <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ player.id)}}"> 
+                                            <button>
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %} 
+                    </tbody>     
+                </table>
+            </div>
         </div>
-    </div>
-    <div class="navigation">
-        {{ knp_pagination_render(players) }}
-    </div>
-</div>    
+        <div class="navigation">
+            {{ knp_pagination_render(players) }}
+        </div>
+    </div> 
+</section>       
 
                
                
