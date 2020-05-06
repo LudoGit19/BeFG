@@ -2,7 +2,7 @@
 
 {% block title %}Accueil{% endblock %}
 
-{% block monTitre %}{% endblock %}
+{% block monTitre %}degemer mat ! BeforGame{% endblock %}
 {% block body %}
 
 {% for message in app.flashes('notice') %}
@@ -15,10 +15,11 @@
 {% endfor %}
 
 
-        <section>
-            <div class="container">
 
-                
+<!-- page accueil V1 -->
+        <section>
+            <div class="content">
+               
                     <div class="row mbr-justify-content-center">
             
                         <div class="col-lg-6 mbr-col-md-10" >
@@ -45,11 +46,10 @@
                             </a>
                         </div>
                         <div class="col-lg-6 mbr-col-md-10">
-                            <a href="{{ path('contact') }}" class="buttonMenu">
+                            <a href="{{ path('menu') }}" class="buttonMenu">
                                 <div class="ico-button">
                                     <i class="far fa-address-book"></i>
-                                    <!-- <span class="mbr-iconfont fa-user fa"></span> -->
-
+                                  
                                 </div>
                                 <div class="text-button vcenter">
                                     <h2 class="title3">Contact</h2>
@@ -71,9 +71,7 @@
             
                     </div>
             </div>
-        </section>
-    <!-- </div>
-</div>      -->
+        </section> 
 
 
 

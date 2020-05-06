@@ -5,15 +5,20 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
 
         
-        <link rel="stylesheet" href="{{asset('css/main.css')}}">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+        
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
         <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+        <link rel="stylesheet" href="{{asset('css/main.css')}}">
         <!-- https://fontawesome.com/ -->
         <script src="https://kit.fontawesome.com/d40561186c.js" crossorigin="anonymous"></script>
-
+       
 
         <!-- https://www.w3schools.com/icons/ -->
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
@@ -24,14 +29,14 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body> 
-        {% include "header.html.twig" %} 
+        {% include "header2.html.twig" %} 
 
 <!--    
         <button>Hide</button>
         <p>This is a paragraph with little content.</p> -->
          
         <div class="container">
-            <h1 class="text-dark text-center m-2 p-2 ">{% block monTitre %}{% endblock %}</h1>           
+            <h1 class="text-center text-dark">{% block monTitre %}{% endblock %}</h1>
         </div>
 
         {% block javascripts %}
@@ -45,7 +50,7 @@
 
         <script src="{{ asset('js/index.js') }}"></script>
         
-       
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
