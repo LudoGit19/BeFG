@@ -3,9 +3,13 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-{% block monTitre %}Contactez-nous !{% endblock %}
+{% block monTitre %}Nouveau Contact{% endblock %}
 
-<p>Nom : {{contact.name}}</p>
+<!-- formulaire qui permet de formater le mail -->
+
+<p>Prénom : {{contact.fname}}</p>
+<p>Nom : {{contact.lname}}</p>
+<p>Tèl : {{contact.phone}}</p>
 <p>E-mail : {{contact.email}}</p>
 <p>Message : {{contact.message|raw}}</p>
 

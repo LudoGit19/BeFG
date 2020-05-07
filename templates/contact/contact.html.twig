@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+{% block monTitre %}Contactez-nous !{% endblock %}
+{% block body %}
+{% include "header2.html.twig" %} 
+
+<div class="jumbotron bg-dark">
+    <h1 class="text-center text-info">Conctactez-nous !</h1>
+</div>
+
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        {% for message in app.flashes('message') %}
+        <div class="alert alert-success"  role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+
+<!-- formulaire qui permet d'envoyer un mail -->
+<!-- /!\ dans  services_profiler.yaml   intercept_redirects: false  -> mettre true -->
+
+        <div class="container">
+            <div id="contactForm" class="mt-4">
+                {{ form_start(contactForm)}}
+                <div class="row">
+                    <div class="col">{{ form_row(contactForm.fname) }}</div>
+                    <div class="col">{{ form_row(contactForm.lname) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ form_row(contactForm.phone) }}</div>
+                    <div class="col">{{ form_row(contactForm.email) }}</div>
+                </div>
+                {{ form_rest(contactForm)}}
+                <div class="form-group">
+                    <button class="btn btn-primary p-3">Envoyer</button>
+                </div>
+                {{ form_end(contactForm)}}
+
+            </div>
+        </div>    
+    </div>
+</div>    
+
+{% endblock %}

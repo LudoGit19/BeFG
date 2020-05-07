@@ -2,12 +2,11 @@
 <div class="nav-side-menu">
     <div class="brand">BeForGame</div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-  
         <div class="menu-list">
   
             <ul id="menu-content" class="menu-content collapse out">
                 <li>
-                    <a href="{{ path('accueil') }}">
+                    <a href="{{ path('home') }}">
                     <i class="fa fa-home fa-lg"></i>Home
                     </a>
                 </li>
@@ -53,13 +52,13 @@
                   <a href="#"><i class="fa fa-user fa-lg"></i> Profile <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="profile">
-                    {% if not app.user %}
+                    {#{% if not app.user %}#}
                         <li><a href="{{ path('registration') }}">S'inscrire</a></li>
                         <li><a href="{{ path('login') }}">Login</a></li>
-                    {% else %}    
+                    {#{% else %} #}  
                         <li class="active"><a href="{{ path('logout') }}">Logout</a></li>
                        
-                    {% endif %}
+                    {#{% endif %}#}
                 </ul>
 
 

@@ -14,11 +14,19 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class GlobalController extends AbstractController  // render, redirectToRoute
 {
     /**
-     * @Route("/", name="accueil")
+     * @Route("/", name="home")
      */
     public function index()
     {
         return $this->render('global/accueil.html.twig');
+    }
+
+      /**
+     * @Route("/dashboard", name="dashboard")
+     */
+    public function dashboard()
+    {
+        return $this->render('global/dashboard.html.twig');
     }
 
      /**
@@ -47,11 +55,11 @@ class GlobalController extends AbstractController  // render, redirectToRoute
             $em->flush();
 
             $this->addFlash(
-                'notice', 
+                'success', 
                 'Vous êtes bien inscrit'
             );
 
-            return $this->redirectToRoute("accueil");
+            return $this->redirectToRoute("dashboard");
         }
         
         return $this->render('global/registration.html.twig', [

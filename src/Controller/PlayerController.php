@@ -29,7 +29,7 @@ class PlayerController extends AbstractController
             $repo->findAllWithPagination($searchPlayer), 
             $request->query->getInt('page', 1), /*page number*/
             16 /*limit per page*/
-        );;
+        );
         
         return $this->render('player/players.html.twig', [
             "players" => $players,
