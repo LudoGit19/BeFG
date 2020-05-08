@@ -25,11 +25,11 @@ class EventController extends AbstractController
     }
     
     /**
-     * @route("/admin/creation", name="admin_ajout_event")
+     * @route("/modif/event", name="modif_event")
      * 
      */
 
-    public function ajoutEvent(Event $event, Request $request, EntityManagerInterface $entityManager){
+    public function modifEvent(Event $event = null, Request $request, EntityManagerInterface $entityManager){
 
         if(!$event) {
             $event = new Event();
@@ -39,17 +39,16 @@ class EventController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){          
-            // $modif = $player->getId() !== null;
+            $modif = $event->getId() !== null;
             $entityManager->persist($event);
             $entityManager->flush();
-            // $this->addFlash("success", ($modif) ? "La modification du joueur a été effectuée" : "L'ajout du joueur a été effectué");
+            $this->addFlash("success", ($modif) ? "La modification de l'évènement a été effectuée" : "L'ajout du joueur a été effectué");
             return $this->redirectToRoute("admin");
         }
 
         return $this->render('admin/modifEvent.html.twig', [
             "event" => $event,
-            "form"   => $form->createView()
-            // "isModification" => $player->getId() !== null
+            "formEvent" => $form->createView()
 
         ]);
     }

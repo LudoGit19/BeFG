@@ -12,17 +12,19 @@
 
 <div id="page-content-wrapper">
     <div class="container-fluid">
-        {{form_start(form)}}    
-                <div class="row">
-                    <div class="col-6 p-4 m-auto">
-                        <div>{{ form_row(form.imageFile) }}</div> 
-                    {{form_widget(form)}}
-                        <a href="{{ path('admin') }}" class="btn btn-primary">Retour</a>
-                        <input type="submit" value="Valider" class="btn btn-success">
+        <div id="modifPlayerForm" class="mt-4 text-info">
+            {{form_start(form)}}    
+                    <div class="row">
+                        <div class="col-6 p-4 m-auto">
+                            <div>{{ form_row(form.imageFile) }}</div> 
+                        {{form_widget(form)}}
+                            <a href="{{ path('admin') }}" class="btn btn-primary">Retour</a>
+                            <input type="submit" value="Valider" class="btn btn-success">
+                        </div>
                     </div>
-                </div>
-            </div>    
-        {{form_end(form)}}
+                </div>    
+            {{form_end(form)}}
+        </div>    
     </div>
 </div>        
         

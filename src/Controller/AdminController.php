@@ -42,7 +42,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @route("/admin/creation", name="admin_ajout_player")
+     * @route("/admin/creation/player", name="admin_ajout_player")
      * @Route("/admin/{id}", name="admin_modification_player", methods="GET|POST")
      */
 

@@ -13,39 +13,38 @@
 
                 <li>
                     <a href="{{ path('contact') }}">
-                    <i class="fa fa-user fa-lg"></i>Contact
+                    <i class="fa fa-at fa-lg"></i>Contact
                     </a>
                 </li>
 
-                <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-                    <a href="#"><i class="fa fa-dashboard fa-lg"></i>Dashboard<span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="products">
-                    <li><a href="{{ path('players') }}">Players</a></li>
-                    {% if is_granted('ROLE_ADMIN') %} 
-                    <li><a href="{{ path('admin') }}">AdminPlayers</a></li>
-                    {% endif %}
-                    <li><a href="#">Events</a></li>
-                    {% if is_granted('ROLE_ADMIN') %}
-                    <li><a href="{{ path('events') }}">AdminEvents</a></li>
-                    {% endif %} 
-                    <li><a href="#">other</a></li>
-                    <li><a href="#">AdminOther</a></li>
-                </ul>
+                <ul>
+                    <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+                        <a href="#"><i class="fa fa-dashboard fa-lg"></i>Dashboard<span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="products">
+                        <li><a href="{{ path('players') }}">Players</a></li>
+                        <li><a href="{{ path('events') }}">Events</a></li>
+
+                    </ul>
+                   
   
 
-                <!-- <li data-toggle="collapse" data-target="#service" class="collapsed">
-                  <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
-                </li>  
-                <ul class="sub-menu collapse" id="service">
-                  <li data-toggle="collapse" data-target="#service2" class="collapsed">New Service 1</li>
-                  <ul class="sub-menu2 collapse" id="service2">
-                  <li>New Service 10</li>
-                  </ul>
-                  
-                  <li>New Service 2</li>
-                  <li>New Service 3</li>
-                </ul> -->
+                <li data-toggle="collapse" data-target="#service" class="collapsed">
+                  <a href="#"><i class="fa fa-cogs fa-lg"></i> Admin <span class="arrow"></span></a>
+                </li>   
+                    <ul class="sub-menu collapse" id="service">
+                        <!-- <li data-toggle="collapse" data-target="#service2" class="collapsed"></li>
+                        <ul class="sub-menu2 collapse" id="service2"> -->
+                            {% if is_granted('ROLE_ADMIN') %} 
+                            <li><a href="{{ path('admin') }}">AdminPlayers</a></li>
+                        
+                            <li><a href="{{ path('events') }}">AdminEvents</a></li>
+                            {% endif %} 
+                            <li><a href="#">other</a></li>
+                            <li><a href="#">AdminOther</a></li>
+                        </ul>
+                    </ul>
+                </ul>    
 
 
                 <li data-toggle="collapse" data-target="#profile" class="collapsed">

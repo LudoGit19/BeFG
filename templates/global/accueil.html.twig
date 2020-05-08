@@ -5,93 +5,89 @@
 
 {% block body %}
 
-<!-- <section class="mainBG">
-    <div class="jumbotron mainBG-txt mr0">
-        <div class="container">
-            <div class="row text-center jum-bg">
-                <h1 class="mr0"><strong>degemer mat ! BeforGame</strong></h1>
-                <p> Bienvenue sur la plateforme de BeForgame </p>
-            </div>
-        </div>
-    </div>
-</section> -->
+
+
+
 <div class="container">
+    
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    
     <div class=" overlay-image ">
-        <!-- <div class="text-block"> -->
-            <a href="#">
-            <img class="image" src="{{ asset("images/other/technoCoffee.jpeg") }}" alt="Nature" style="width:100%;">  
-        
-                    <div class="subTitle">BeForGame</div> 
-
-        <!-- </div>        -->
-
-            <div id="page-content-wrapper">
-                <div class="container-fluid">
-            
-                    {% for message in app.flashes('success') %}
-                    <div class="alert alert-success">
-                        {{message}}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    {% endfor %}
-                        <div class="row mbr-justify-content-center">
-                
-                            <div class="col-lg-6 mbr-col-md-10" >
-
-                                <a href="{{ path('dashboard') }}" class="buttonMenu">                  
-                                    <div class="ico-button">
-                                        <i class="fa fa-dashboard fa-lg"></i>
-                                    </div>
-                                    <div class="text-button vcenter">
-                                        <h2 class="title3">DashBoard</h2>
-                                        <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                                    </div>
-                                </a>                   
-                            </div>
-                            <div class="col-lg-6 mbr-col-md-10">
-                                <a href="{{ path('players') }}" class="buttonMenu">
-                                    <div class="ico-button">
-                                        <i class="fa fa-users fa-lg"></i>
-                                    </div>
-                                    <div class="text-button vcenter">
-                                        <h2 class="title3">Ma Team</h2>
-                                        <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-6 mbr-col-md-10">
-                                <a href="{{ path('contact') }}" class="buttonMenu">
-                                    <div class="ico-button">
-                                        <i class="fa fa-user fa-lg"></i>
-                                        
-                                    </div>
-                                    <div class="text-button vcenter">
-                                        <h2 class="title3">Contact</h2>
-                                        <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-6 mbr-col-md-10">
-                                <a href="{{ path('events') }}" class="buttonMenu">
-                                    <div class="ico-button">
-                                        <i class="fa fa-dashboard fa-lg"></i>
-                                    </div>
-                                    <div class="text-button vcenter">
-                                        <h2 class="title3">Events</h2>
-                                        <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                                    </div>
-                                </a>    
+        <img class="image" src="{{ asset("images/other/ball_b&w.jpg") }}" alt="Nature">  
+             <div class="subTitle">
+                <section class="mainBG">
+                    <div class="jumbotron mainBG-txt mr0">
+                        <div class="container">
+                            <div class="row text-center jum-bg">
+                                <h1 class="mr0"><strong>degemer mat ! BeforGame</strong></h1>
+                                <p> Bienvenue sur la plateforme de BeForgame </p>
                             </div>
                         </div>
+                    </div>
+                </section>
+            </div>
+    </div>       
+    <!-- mainMenu avec 4 gros button -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row mbr-justify-content-center">
+    
+                <div class="col-lg-6 mbr-col-md-10" >
+
+                    <a href="{{ path('dashboard') }}" class="buttonMenu">                  
+                        <div class="ico-button">
+                            <i class="fa fa-dashboard fa-lg"></i>
+                        </div>
+                        <div class="text-button vcenter">
+                            <h2 class="title3">DashBoard</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        </div>
+                    </a>                   
                 </div>
-            </div>  
+                <div class="col-lg-6 mbr-col-md-10">
+                    <a href="{{ path('players') }}" class="buttonMenu">
+                        <div class="ico-button">
+                            <i class="fa fa-users fa-lg"></i>
+                        </div>
+                        <div class="text-button vcenter">
+                            <h2 class="title3">Ma Team</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6 mbr-col-md-10">
+                    <a href="{{ path('contact') }}" class="buttonMenu">
+                        <div class="ico-button">
+                            <i class="fa fa-user fa-lg"></i>
+                            
+                        </div>
+                        <div class="text-button vcenter">
+                            <h2 class="title3">Contact</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6 mbr-col-md-10">
+                    <a href="{{ path('events') }}" class="buttonMenu">
+                        <div class="ico-button">
+                            <i class="fa fa-dashboard fa-lg"></i>
+                        </div>
+                        <div class="text-button vcenter">
+                            <h2 class="title3">Events</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        </div>
+                    </a>    
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>    
           
-    </div>
-</div>
-
-
-
-
 {% endblock %}

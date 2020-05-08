@@ -54,6 +54,11 @@ class Event
         return $this;
     }
 
+     /**
+     * Get dateCreated
+     *
+     * @return datetime 
+     */
     public function getDateCreated($format = 'Y-m-d H:i:s')
     {
         return $this->dateCreated->format($format);

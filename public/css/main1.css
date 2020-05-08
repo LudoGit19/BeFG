@@ -19,18 +19,16 @@
 
 /* Conteneur principal */
 .overlay-image {
-  position: relative;
-  width: 100%;
+  margin-top: 150px;
  }
  /* Image originale */
  .overlay-image .image {
   display: block;
   width: 100%;
   height: auto;
-  cursor: none;
  }
  /* Texte original */
- .overlay-image .title {
+ /* .overlay-image .button {
   color: #292d50;
   font-family: 'Monofett', cursive;
   font-size: 120px; 
@@ -43,12 +41,11 @@
   transform: translate(-50%, -50%);
   width: 100%;
   cursor: pointer;
- }
+ } */
 
  /* Texte original */
  .overlay-image .subTitle {
-  color: rgb(42, 124, 134);
-  font-family: 'Cabin Sketch', cursive;
+ 
   font-size: 100px; 
   letter-spacing: 4px;   
   text-shadow: 2px 2px 2px  #2c1249;
@@ -90,7 +87,7 @@ div.content {
 body{
     font-family: 'Lato', sans-serif;
     position: relative;
-    background-color: rgb(136, 136, 136); 
+    background-color: rgb(2, 2, 2); 
     margin: 0px;
     padding: 0px;
 }
@@ -130,8 +127,7 @@ img{
   background-color: sandybrown 180px;
 } */
 .mainBG {
-  background: url(http://lorempixel.com/1920/1920/sports/3/) no-repeat center center fixed; 
-  background-size: cover;
+  padding-top: 100px; 
 }
 .mainBG-txt.jumbotron { 
   padding-top: 100px; 
@@ -178,7 +174,7 @@ img{
     position: fixed;
     left: 0;
     bottom: 0;
-    height:100px;
+    height:150px;
     width: 100%;
     background-color: rgb(25, 37, 58);
     color: white;
@@ -193,7 +189,7 @@ img{
 #page-content-wrapper {
   width: 100%;
   position: absolute;
-  padding: 15px;
+  padding: 65px;
 }
 
 .nav-side-menu {
@@ -476,7 +472,7 @@ text-decoration:none;
     border-radius: 90px;
     margin: 2px;
     margin-top: 2px;
-    background-image: linear-gradient(to right, #2b0b3d 0%, rgb(24, 42, 80) 51%,#7097df 100%);
+    background-image: linear-gradient(to right, #0b1136 0%, rgb(24, 42, 80) 51%,#7097df 100%);
     /* background-image: linear-gradient(to right, #7097df 0%, #203b8b 51%, 100%); */
     
     background-size: 200% auto;

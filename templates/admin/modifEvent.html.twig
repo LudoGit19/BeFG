@@ -11,16 +11,17 @@
 </div>
 
 <div id="page-content-wrapper">
-    <div class="container-fluid"> 
-        {{form_start(form)}}
+    <div class="container-fluid">
+        <div id="modifPlayerForm" class="mt-4 text-info"></div>
+        {{form_start(formEvent)}}
             <div class="row">
                 <div class="col-6 p-4 m-auto">
-                    {{form_widget(form)}}
-                    <a href="{{ path('admin') }}" class="btn btn-primary">Retour</a>
+                    {{form_widget(formEvent)}}
+                    <a href="#" class="btn btn-primary">Retour</a>
                     <input type="submit" value="Valider" class="btn btn-success">
                 </div>
             </div>
-        {{form_end(form)}}
+        {{form_end(formEvent)}}
     </div>
 </div>    
        
