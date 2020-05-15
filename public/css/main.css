@@ -9,7 +9,7 @@
   position: absolute;
   bottom: 50px;
   right: 50px;
-  background-color: rgb(11, 10, 26);
+  background-color: #1a1718;
   color: white;
   padding-left: 20px;
   padding-right: 20px;
@@ -27,28 +27,14 @@
   width: 100%;
   height: auto;
  }
- /* Texte original */
- /* .overlay-image .button {
-  color: #292d50;
-  font-family: 'Monofett', cursive;
-  font-size: 120px; 
-  letter-spacing: 4px;   
-  text-shadow: 2px 2px 2px  #2c1249;
-  text-align: center;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  cursor: pointer;
- } */
+ 
 
  /* Texte original */
  .overlay-image .subTitle {
  
   font-size: 100px; 
   letter-spacing: 4px;   
-  text-shadow: 2px 2px 2px  #2c1249;
+  text-shadow: 2px 2px 2px  #1a1718;
   text-align: center;
   position: absolute;
   top: 20%;
@@ -145,7 +131,7 @@ img{
   font-weight: 700;
 }
 .jum-bg {
-  background-color: rgba(20, 28, 96, 0.63);
+  background-color: #1e3f58a6;
   padding: 15px 0; 
   color: #fff;
 }
@@ -189,7 +175,8 @@ img{
 #page-content-wrapper {
   width: 100%;
   position: absolute;
-  padding: 65px;
+  margin: 30px;
+  padding: 75px;
 }
 
 .nav-side-menu {
@@ -372,7 +359,7 @@ img{
   margin-top: 40px;
   width: 600px; 
   height: 320px;
-  border: 1px solid #9C9C9C;
+  border: 1px solid #1a1e1b;
   background-image: linear-gradient(to bottom, #aec1c3, #a9b5b7, #bcc5c6, #cfd5d5, #e3e5e5);
 }
 #login .container #login-row #login-column .login-box #login-form {
@@ -382,78 +369,7 @@ img{
   margin-top: -85px;
 }
 
-/* End Custom login form */
 
-
-/* custom table Player */
-
-/* .custab{
-    border: 1px solid #ccc;
-    padding: 5px;
-    margin: 5% 0;
-    box-shadow: 3px 3px 2px #ccc;
-    transition: 0.5s;
-    }
-.custab:hover{
-    box-shadow: 3px 3px 0px transparent;
-    transition: 0.5s;
-    } */
-
-/* Taille image player */
-
-
-/* header :old version Classe principale de la barre de navigation */
-/* .navbar-default {
- 
-    background-color: rgb(24, 42, 80);
-    border-color: rgb(24, 42, 80);
-   } */
-/* Couleur des titres affichés dans la barre */
-/* .navbar-default .navbar-brand {
-    color: #fff;
-    font-family: 'Play', sans-serif
-   }    */
-
-/* .nav-item::after{
-    font-family: 'Play', sans-serif;
-    content:'';
-    display:block;
-    width:0px;
-    height:4px;
-    background:#0084ff;
-    transition: 0.2s;
-    margin-top:-10px;
-} */
-
-/* .nav-item:hover::after{
-    font-family: 'Play', sans-serif;
-    width:100%;
-} */
-/* 
-.dropdown-item{
-    font-family: 'Play', sans-serif;
-}
-
-.nav-link{
-    font-family: 'Play', sans-serif;
-    padding:15px 5px;
-    transition:0.2s;
-}
-
-.navbar-nav .nav-link {
-    font-family: 'Play', sans-serif;
-    color:#fff;
-    font-weight:bold;
-    font-size:18px;
-} */
-
-/* Css accueil.html.twig */
-
-/* section {
-    padding-top: 4rem;
-    padding-bottom: 5rem;
-    background-color: #737b8a;
-} */
 a:link {
 text-decoration:none;
 }
@@ -472,7 +388,7 @@ text-decoration:none;
     border-radius: 90px;
     margin: 2px;
     margin-top: 2px;
-    background-image: linear-gradient(to right, #0b1136 0%, rgb(24, 42, 80) 51%,#7097df 100%);
+    background-image: linear-gradient(to right, #1e3f58 0%, #181819 51%,#1e3f58 100%);
     /* background-image: linear-gradient(to right, #7097df 0%, #203b8b 51%, 100%); */
     
     background-size: 200% auto;
@@ -486,36 +402,13 @@ text-decoration:none;
     .buttonMenu:focus {
     color:	#ffffff;
     background-position: right center;
-    -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 5px 15px 0px #1e3f58;
+    -moz-box-shadow: 0px 5px 15px 0px #1e3f58;
+    box-shadow: 0px 5px 15px 0px #1e3f58;
     text-decoration: none;
     }
     
     
-
-
-/* Css Custom login */
-/* body {
-    margin: 0;
-    padding: 0;
-   
-    height: 100vh;
-  } */
-  #login .container #login-row #login-column #login-box {
-    margin-top: 120px;
-    max-width: 600px;
-    height: 320px;
-    border: 1px solid #9C9C9C;
-    background-color: #EAEAEA;
-  }
-  #login .container #login-row #login-column #login-box #login-form {
-    padding: 20px;
-  }
-  #login .container #login-row #login-column #login-box #login-form #register-link {
-    margin-top: -85px;
-  }
-
 /* Css custom Error */
 
 /* .error-container {
@@ -528,38 +421,23 @@ text-decoration:none;
     
 } */
 
-
-
-.button {
-color:	#fff;
-padding: 12px 36px;
-font-weight: 600;
-border: none;
-position: relative;
-font-family: 'Raleway', sans-serif;
-display: inline-block;
-text-transform: uppercase;
--webkit-border-radius: 90px;
--moz-border-radius: 90px;
-border-radius: 90px;
-margin: 2px;
-margin-top: 2px;
-background-image: linear-gradient(to right, #09b3ef 0%, #1e50e2 51%,#09b3ef 100%);
-background-size: 200% auto;
-flex: 1 1 auto;
-text-decoration: none;
-
+/* test bootstrap dual List : https://bootsnipp.com/snippets/VP0M8 #########################################################################################*/
+.dual-list .list-group {
+  margin-top: 8px;
 }
 
-
-.button:hover,
-.button:focus {
-color:	#ffffff;
-background-position: right center;
--webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
--moz-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
-text-decoration: none;
+.list-left li, .list-right li {
+  cursor: pointer;
 }
+
+.list-arrows {
+  padding-top: 100px;
+}
+
+  .list-arrows button {
+      margin-bottom: 20px;
+  }
+  /* fin test dual list #########################################################################################*/
+
 
 

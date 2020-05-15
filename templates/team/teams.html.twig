@@ -1,44 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Events{% endblock %}
+{% block title %}Team{% endblock %}
+{% block monTitre %}Team{% endblock %}
 
-{% block monTitre %}Liste des évènements{% endblock %}
 {% block body %}
 {% include "header2.html.twig" %} 
-<div class="jumbotron bg-dark">
-    <h1 class="text-center text-info">Les évènements</h1>
-</div>
 
-
-
-    <div class="container">    
+<div class="container">    
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{message}}
             </div>
-        {% endfor %}
+        {% endfor %}   
+</div>         
 
 <div id="page-content-wrapper">
     <div class="container-fluid">       
         <div class="table table-bordered text-info p-4">   
-            <p>Tapez quelque chose dans le champ de saisie pour rechercher dans le tableau par date</p>  
+            <p>Tapez quelque chose dans le champ de saisie pour rechercher dans le tableau par équipe</p>  
             <input id="myInput" type="text" placeholder="Search..">
             <br><br>    
             <table class="table table-hover">
                 <thead class="thead-light">
                                 
-                        <a href="#" class="btn btn-warning btn-xs pull-left p-4 m-4"><i class="fa fa-plus fa-lg"></i> Add Event</a>
+                        <a href="#" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-clipboard fa-lg"></i>  +</a>
 
                     <tr>
                         <th></th>
-                        <th>Date</th>
-                        <th>Evènements</th>
+                        <th>Team</th>
+                        <th>photo</th>
+                        <th>category</th>
                         {# <th>Lieu</th>                    #}
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
-                    {%  for event in events %}
+                    {%  for team in teams %}
                         <tr>
                             <td>
                                 <div class="ckbox">
@@ -47,10 +44,10 @@
                                 </div>
                             </td>
                             
-                            <td><a href="#"><strong>{{ event.DateCreated }}</strong></a></td>
-                            <td>{{ event.name }}</td>
-                        
-                            <!-- <td>{{ event.name }}</td> -->
+                            <td><a href="#"><strong>{{ team.name }}</strong></a></td>
+                            <td></td>
+                            <td>{{ team.name}}</td>
+                         
                             <td>
                                 <div class="row">
                                     <!-- <a class='btn btn-info btn-xs m-1' href="#"><span class="glyphicon glyphicon-edit"></span>Edit</a>  -->
@@ -72,8 +69,4 @@
         </div>
     </div>
 </div>    
-
-               
-            
-
 {% endblock %}

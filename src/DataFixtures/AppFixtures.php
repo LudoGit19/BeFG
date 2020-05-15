@@ -3,13 +3,13 @@
 namespace App\DataFixtures;
 
 use App\Entity\Team;
-use App\Entity\Event;
+
 use App\Entity\Player;
 use App\Entity\Category;
-use App\Entity\Status;
-use DateTime;
+;
+
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\EventArgs;
+
 use Doctrine\Common\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture

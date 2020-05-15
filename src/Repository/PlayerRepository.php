@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\Player;
 use Doctrine\ORM\Query;
 use App\Entity\SearchPlayer;
-use App\Form\SearchPlayerType;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
@@ -35,6 +34,7 @@ class PlayerRepository extends ServiceEntityRepository
 
         return $req->getQuery();
     }
+}
 
     // public function findAllGreaterThanPrice($price): array
     // {
@@ -50,7 +50,7 @@ class PlayerRepository extends ServiceEntityRepository
     //     // returns an array of Product objects
     //     return $query->getResult();
     // }
-}
+
 
 
     // /**

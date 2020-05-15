@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
@@ -22,6 +23,8 @@ class Event
     private $name;
 
     /**
+     * @Assert\DateTime
+     * @var string A "Y-m-d H:i:s" formatted value
      * @ORM\Column(type="datetime")
      */
     private $dateCreated;
@@ -59,9 +62,9 @@ class Event
      *
      * @return datetime 
      */
-    public function getDateCreated($format = 'Y-m-d H:i:s')
+    public function getDateCreated(): ?\DateTimeInterface
     {
-        return $this->dateCreated->format($format);
+        return $this->dateCreated;
     }
 
 

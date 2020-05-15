@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}category{% endblock %}
+
+{% block monTitre %}Catégories{% endblock %}
+{% block body %}
+
+{% include "header2.html.twig" %} 
+
+
+<!-- <div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="container">    
+            <div class="table table-bordered text-info p-4">                      
+                <p> Sélectionnez la catégorie</p>
+                    <FORM>
+                        <SELECT name="Categry" id="category">
+                        <OPTION value = 'u13' select = 'u13'>U13
+                        <OPTION value = 'u11'>U11
+                        <OPTION value = 'u9'>U9
+                        <OPTION value = 'u7'>U7
+                        </SELECT>
+                    </FORM>
+                    <div>
+                        <a href="#">Ajouter une catégorie</a>
+                    </div>
+            </div> -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">       
+                    <div class="table table-bordered text-info p-4">   
+                         
+                        <table class="table table-hover">
+                            <thead class="thead-light">
+                                            
+                                    <a href="#" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-clipboard fa-lg"></i>  +</a>
+            
+                                <tr>
+                                    <th>catégorie</th>
+                               
+                                    {# <th>Lieu</th>                    #}
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                {%  for category in categories %}
+                              
+                                    <tr>
+                                
+                                        
+                                        <td><a href="#"><strong>{{ category}}</strong></a></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="row">
+                                                <!-- <a class='btn btn-info btn-xs m-1' href="#"><span class="glyphicon glyphicon-edit"></span>Edit</a>  -->
+                                            
+                                                <form method="POST" action="#" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
+                                                    <input type="hidden" name="_method" value="delete"> 
+                                                    <input type="hidden" name="_token" value="#"> 
+                                                    <button>
+                                                        <i class="fa fa-trash fa-lg"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                
+                                    </tr>
+                                {% endfor %} 
+                            </tbody>     
+                        </table>
+                    </div>
+                </div>
+            </div>    
+
+
+
+
+
+
+
+
+
+
+
+
+{# start test bootstrap dual List : https://bootsnipp.com/snippets/VP0M8 #}
+
+            {# <div class="row">
+        
+                <div class="dual-list list-left col-md-5">
+                    <div class="well text-right">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-search"></span>
+                                    <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="btn-group">
+                                    <a class="btn btn-default selector" title="select all"><i class="glyphicon glyphicon-unchecked"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item">bootstrap-duallist <a href="https://github.com/bbilginn/bootstrap-duallist" target="_blank">github</a></li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">Porta ac consectetur ac</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="list-arrows col-md-1 text-center">
+                    <button class="btn btn-default btn-sm move-left">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+            
+                    <button class="btn btn-default btn-sm move-right">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                </div>
+        
+                <div class="dual-list list-right col-md-5">
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="btn-group">
+                                    <a class="btn btn-default selector" title="select all"><i class="glyphicon glyphicon-unchecked"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                                    <span class="input-group-addon glyphicon glyphicon-search"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">Porta ac consectetur ac</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div> 
+    #}
+
+
+{# <div id="page-content-wrapper">
+    <div class="container-fluid">  
+</div>           #}
+{# 
+
+<div id="page-content-wrapper">
+    <div class="container-fluid">  
+
+    
+    </div>
+</div>         #}
+{% endblock %}
