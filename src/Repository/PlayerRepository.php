@@ -21,7 +21,7 @@ class PlayerRepository extends ServiceEntityRepository
         parent::__construct($registry, Player::class);
     }
 
-    public function findAllWithPagination(SearchPlayer $searchPlayer) : Query{
+    public function findAllPagination(SearchPlayer $searchPlayer) : Query{
         $req = $this->createQueryBuilder('p');
         if($searchPlayer->getMinYearOfBirth()) {// est-ce que ma recherche n'est pas vide
             $req = $req->andWhere('p.yearOfBirth >= :min')

@@ -28,7 +28,7 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         $players =  $paginatorInterface->paginate(
-            $repo->findAllWithPagination($searchPlayer), 
+            $repo->findAllPagination($searchPlayer), 
             $request->query->getInt('page', 1), /*page number*/
             10 /*limit per page*/
         );;

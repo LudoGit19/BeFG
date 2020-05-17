@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PlayerRepository")
@@ -22,16 +23,20 @@ class Player
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2,max=30,minMessage="minimum 2 caractères",maxMessage="maximum 30 caractères")
      */
     private $fname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2,max=30,minMessage="minimum 2 caractères",maxMessage="maximum 30 caractères")
      */
     private $lname;
-
+// @Assert\Regex(pattern="[0-9]", message="number_only") 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=10,max=10)
+     * 
      */
     private $phone;
 
@@ -50,8 +55,6 @@ class Player
      * @Vich\UploadableField(mapping="player_image", fileNameProperty="image")
      */
     private $imageFile;
-
-
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Team", inversedBy="joueurs")

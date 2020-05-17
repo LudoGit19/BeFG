@@ -54,13 +54,13 @@
                   <a href="#"><i class="fa fa-user fa-lg"></i> Profile <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="profile">
-                    {#{% if not app.user %}#}
+                    {% if not app.user %}
                         <li><a href="{{ path('registration') }}">S'inscrire</a></li>
                         <li><a href="{{ path('login') }}">Login</a></li>
-                    {#{% else %} #}  
+                    {% else %}  
                         <li class="active"><a href="{{ path('logout') }}">Logout</a></li>
                        
-                    {#{% endif %}#}
+                    {% endif %}
                 </ul>
 
 

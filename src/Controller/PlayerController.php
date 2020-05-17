@@ -22,7 +22,7 @@ class PlayerController extends AbstractController
         $form = $this->createForm(SearchPlayerType::class, $searchPlayer);
         $form->handleRequest($request);
         $players =  $paginatorInterface->paginate(
-            $repo->findAllWithPagination($searchPlayer), 
+            $repo->findAllPagination($searchPlayer), 
             $request->query->getInt('page', 1), /*page number*/
             16 /*limit per page*/
         );

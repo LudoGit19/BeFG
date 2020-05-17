@@ -33,16 +33,19 @@ class AppFixtures extends Fixture
         $manager->persist($category4);
 
         $team1 = new Team();
+        $team1->setCategory($category1);
         $team1->setName("A");
         $team1->setImage("team1.png");      
         $manager->persist($team1);
 
         $team2 = new Team();
+        $team2->setCategory($category3);
         $team2->setName("B");
         $team2->setImage("team2.png");      
         $manager->persist($team2);
 
         $team3 = new Team();
+        $team3->setCategory($category2);
         $team3->setName("C");
         $team3->setImage("team3.png");      
         $manager->persist($team3);

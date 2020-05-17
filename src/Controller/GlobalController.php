@@ -21,7 +21,7 @@ class GlobalController extends AbstractController  // render, redirectToRoute
         return $this->render('global/accueil.html.twig');
     }
 
-      /**
+    /**
      * @Route("/dashboard", name="dashboard")
      */
     public function dashboard()

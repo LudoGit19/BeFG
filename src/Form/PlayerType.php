@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Team;
 use App\Entity\Player;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -26,6 +27,7 @@ class PlayerType extends AbstractType
                 'choice_label' => 'name'
 
             ])
+           
         ;
     }
 

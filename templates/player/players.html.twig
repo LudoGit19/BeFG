@@ -45,7 +45,7 @@
                             {% endif %}    
                         <tr>
                             <th></th>
-                            <th>Photo</th>
+                            {# <th>Photo</th> #}
                             <th>Prénom</th>
                             <th>Nom</th>
                             <th>Catégorie</th>
@@ -64,15 +64,16 @@
                                         <label for="checkbox1"></label>
                                     </div>
                                 </td>
-                                <td><img src="{{ asset('images/players/' ~ player.image) }}" class="perso_imgPlayer img-fluid"></td>
+                                {# <td><img src="{{ asset('images/players/' ~ player.image) }}" class="perso_imgPlayer img-fluid"></td> #}
                                 {% if is_granted('ROLE_ADMIN') %}
                                 <td><a href="{{ path('admin_modification_player', {'id' : player.id}) }}"><strong>{{ player.fname }}</strong></a></td>
                                 {% else %}
                                 <td><strong>{{ player.fname }}</strong></td>                        
                                 {% endif %}
                                 <td>{{ player.lname }}</td>
-                                <td>{{ player.category }}</td>
-                                
+                                <td>{{ player.team.category.name }}</td>
+
+                                 {# {{dump(player.team.category.name)}} #}
                                 <td>{{ player.yearOfBirth }}</td>
                                 <!-- <td>{#{{ player.role }}#}</td> -->
                                 {% if is_granted('ROLE_ADMIN') %}
