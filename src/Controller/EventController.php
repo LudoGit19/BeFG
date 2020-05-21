@@ -25,7 +25,7 @@ class EventController extends AbstractController
     }
     
     /**
-     * @route("/modif/event", name="modif_event")
+     * @route("/admin/modif/event", name="modif_event")
      * 
      */
 

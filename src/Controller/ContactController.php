@@ -15,7 +15,7 @@ class ContactController extends AbstractController
 // https://www.youtube.com/watch?v=ZBfWzWHfUJs
 {
     /**
-     * @Route("/contact", name="contact")
+     * @Route("/visitor/contact", name="contact")
      */
     public function index(Request $request, EntityManagerInterface $em, \Swift_Mailer $mailer)
     {

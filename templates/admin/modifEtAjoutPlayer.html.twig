@@ -4,12 +4,12 @@
 {% block monTitre %}Player {{ player.lname }}{% endblock %}
 
 {% block body %}
-{% include "header2.html.twig" %}
+{% include "header3.html.twig" %}
 
 
-<div id="page-content-wrapper">
-    <div class="container-fluid">
-        <div id="modifPlayerForm" class="mt-4 text-info">
+<div class="d-flex" id="wrapper">
+    <div id="page-content-wrapper">
+        <div class="container-fluid"> 
             {{form_start(form)}}    
                     <div class="row">
                         <div class="col-6 p-4 m-auto">

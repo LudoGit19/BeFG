@@ -18,7 +18,7 @@ class GlobalController extends AbstractController  // render, redirectToRoute
      */
     public function index()
     {
-        return $this->render('global/accueil.html.twig');
+        return $this->render('home.html.twig');
     }
 
     /**
@@ -27,6 +27,14 @@ class GlobalController extends AbstractController  // render, redirectToRoute
     public function dashboard()
     {
         return $this->render('global/dashboard.html.twig');
+    }
+
+    /**
+     * @Route("/test", name="test")
+     */
+    public function test()
+    {
+        return $this->render('global/test.html.twig');
     }
 
      /**
@@ -56,10 +64,10 @@ class GlobalController extends AbstractController  // render, redirectToRoute
 
             $this->addFlash(
                 'success', 
-                'Vous êtes bien inscrit'
+                'Bravo ! Vous êtes bien inscrit. Entrez vos identifiants pour vous loger'
             );
 
-            return $this->redirectToRoute("dashboard");
+            return $this->redirectToRoute("login");
         }
         
         return $this->render('global/registration.html.twig', [

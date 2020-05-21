@@ -3,7 +3,7 @@
 {% block title %}Contact{% endblock %}
 {% block monTitre %}Contactez-nous !{% endblock %}
 {% block body %}
-{% include "header2.html.twig" %} 
+{% include "header3.html.twig" %} 
 
 
 
@@ -13,28 +13,29 @@
 </div>
 {% endfor %}
 
-<div id="page-content-wrapper">
+<div class="container">
     <div class="container-fluid">
 
 <!-- formulaire qui permet d'envoyer un mail -->
 <!-- /!\ dans  services_profiler.yaml   intercept_redirects: false  -> mettre true -->
 
-        <div class="container">
-            <div id="contactForm" class="mt-4 text-info">
-                {{ form_start(contactForm)}}
-                <div class="row">
-                    <div class="col">{{ form_row(contactForm.fname) }}</div>
-                    <div class="col">{{ form_row(contactForm.lname) }}</div>
-                </div>
-                <div class="row">
-                    <div class="col">{{ form_row(contactForm.phone) }}</div>
-                    <div class="col">{{ form_row(contactForm.email) }}</div>
-                </div>
-                {{ form_rest(contactForm)}}
-                <div class="form-group">
-                    <button class="btn btn-primary p-3">Envoyer</button>
-                </div>
-                {{ form_end(contactForm)}}
+<div class="d-flex" id="wrapper">
+    <div id="page-content-wrapper">
+        <div class="container-fluid"> 
+            {{ form_start(contactForm)}}
+            <div class="row">
+                <div class="col">{{ form_row(contactForm.fname) }}</div>
+                <div class="col">{{ form_row(contactForm.lname) }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{ form_row(contactForm.phone) }}</div>
+                <div class="col">{{ form_row(contactForm.email) }}</div>
+            </div>
+            {{ form_rest(contactForm)}}
+            <div class="form-group">
+                <button class="btn btn-primary p-3">Envoyer</button>
+            </div>
+            {{ form_end(contactForm)}}
 
             </div>
         </div>    

@@ -21,7 +21,7 @@
                 <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
                 <link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                <link rel="stylesheet" href="{{asset('css/main.css')}}">
+                <link rel="stylesheet" href="{{asset('css/main1.css')}}">
                 <!-- https://fontawesome.com/ -->
                 <!-- // <script src="https://kit.fontawesome.com/d40561186c.js" crossorigin="anonymous"></script> -->
                 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -32,7 +32,7 @@
                 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"> -->
         
 
-{% block title %}Accueil{% endblock %}
+
 
 {# {% block monTitre %}{% endblock %} #}
 
@@ -40,14 +40,7 @@
 
 <div class="container">
     
-    {% for message in app.flashes('success') %}
-    <div class="alert alert-success">
-        {{message}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {% endfor %}
+   
     
     <div class=" overlay-image ">
         <img class="image" src="{{ asset("images/other/ball_b&w.jpg") }}" alt="Nature">  

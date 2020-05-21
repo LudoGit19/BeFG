@@ -1,19 +1,13 @@
 /* GENERAL */
 
-.container {
-  position: relative;
-  font-family: Arial;
-}
-
-.text-block {
+/* .container {
   position: absolute;
-  bottom: 50px;
-  right: 50px;
-  background-color: #1a1718;
-  color: white;
-  padding-left: 20px;
-  padding-right: 20px;
-}
+  font-family: Arial;
+  left: 200px;
+  
+} */
+
+
 
 /* Overlay avec hover sur une image en HTML/CSS */
 
@@ -44,7 +38,11 @@
   cursor: none;
  }
 
-
+.wrapper{
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
 
 
 
@@ -145,7 +143,7 @@ img{
 
 /* FOOTER */
 
-.footer {
+/* .footer {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -153,33 +151,37 @@ img{
   background-color: rgb(25, 37, 58);
   color: white;
   text-align: center;
+} */
+
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height:20px;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  text-align: center;
 }
 
-@media (max-width: 768px) {
-  .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    height:150px;
-    width: 100%;
-    background-color: rgb(25, 37, 58);
-    color: white;
-    text-align: center;
-    float: right;
-  }
+
+.alert {
+  display:inline-block;
 }
+
 
 
 /* test header2 V3 :################################################### */
 
-#page-content-wrapper {
+/* #page-content-wrapper {
   width: 100%;
   position: absolute;
   margin: 30px;
   padding: 75px;
-}
+} */
 
-.nav-side-menu {
+/* .nav-side-menu {
   overflow: auto;
   font-family: verdana;
   font-size: 12px;
@@ -221,7 +223,7 @@ img{
             }
      }
 */
-}
+/* }
 .nav-side-menu ul :not(collapsed) .arrow:before,
 .nav-side-menu li :not(collapsed) .arrow:before {
   font-family: FontAwesome;
@@ -229,8 +231,8 @@ img{
   display: inline-block;
   padding-left: 10px;
   padding-right: 10px;
-  vertical-align: middle;
-  /* float: right; */
+  vertical-align: middle; */
+  /* float: right;
 }
 .nav-side-menu ul .active,
 .nav-side-menu li .active {
@@ -265,10 +267,10 @@ img{
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: middle;
-}
+} */
 
 /* PT */
-.nav-side-menu ul .sub-menu2 li.active a,
+/* .nav-side-menu ul .sub-menu2 li.active a,
 .nav-side-menu li .sub-menu2 li.active a {
   color: #d19b3d;
 }
@@ -292,9 +294,9 @@ img{
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: middle;
-}
+} */
 /* PT */
-
+/* 
 .nav-side-menu li {
   padding-left: 0px;
   border-left: 3px solid #2e353d;
@@ -318,7 +320,7 @@ img{
   -ms-transition: all 1s ease;
   transition: all 1s ease;
 }
-@media (max-width: 767px) {
+@media (max-width: 1140px) {
   .nav-side-menu {
     position: relative;
     width: 100%;
@@ -348,9 +350,64 @@ img{
   .nav-side-menu .menu-list .menu-content {
     display: block;
   }
-}
+} */ 
 
 /* end test V3 ###############################################################*/
+
+
+/* start sidebar header3 */
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+ body {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  position:relative;
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+/* end sidebar header3 */
 
 
 /* Custom login form */

@@ -4,21 +4,22 @@
 {% block monTitre %}{{ event.name }}{% endblock %}
 
 {% block body %}
-{% include "header2.html.twig" %}
+{% include "header3.html.twig" %}
 
 
-<div id="page-content-wrapper">
-    <div class="container-fluid">
-        <div id="modifPlayerForm" class="mt-4 text-info"></div>
-        {{form_start(formEvent)}}
-            <div class="row">
-                <div class="col-6 p-4 m-auto">
-                    {{form_widget(formEvent)}}
-                    <a href="#" class="btn btn-primary">Retour</a>
-                    <input type="submit" value="Valider" class="btn btn-success">
+<div class="d-flex" id="wrapper">
+    <div id="page-content-wrapper">
+        <div class="container-fluid"> 
+            {{form_start(formEvent)}}
+                <div class="row">
+                    <div class="col-6 p-4 m-auto">
+                        {{form_widget(formEvent)}}
+                        <a href="#" class="btn btn-primary">Retour</a>
+                        <input type="submit" value="Valider" class="btn btn-success">
+                    </div>
                 </div>
-            </div>
-        {{form_end(formEvent)}}
+            {{form_end(formEvent)}}
+        </div>    
     </div>
 </div>    
        

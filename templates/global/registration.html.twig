@@ -4,19 +4,22 @@
 
 {% block monTitre %}S'inscrire{% endblock %}
 {% block body %}
-{% include "header2.html.twig" %} 
+{% include "header3.html.twig" %} 
 
-
-<div class="container">
-    <div id="registreForm" class="mt-4 text-info">
-        {{form_start(form)}}
-        <div class="row">
-            <div class="col-6 p-6 m-auto">
-                {{form_widget(form)}}
-                <input type="submit" class="btn btn-primary" value="valider">
-            </div>
-        </div> 
-        {{form_end(form)}}
-    </div>        
+<div class="d-flex" id="wrapper">
+    <div id="page-content-wrapper">
+        <div class="container-fluid"> 
+            <div id="registreForm" class="mt-4 text-info">
+                {{form_start(form)}}
+                <div class="row">
+                    <div class="col-6 p-6 m-auto">
+                        {{form_widget(form)}}
+                        <input type="submit" class="btn btn-primary" value="valider">
+                    </div>
+                </div> 
+                {{form_end(form)}}
+            </div>        
+        </div>
+    </div>    
 </div>           
 {% endblock %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\admin;
 
 use App\Entity\Player;
 use App\Form\PlayerType;
@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class AdminController extends AbstractController
+class AdminPlayerController extends AbstractController
 {
     /**
      * @Route("/admin", name="admin")
@@ -59,7 +59,7 @@ class AdminController extends AbstractController
             $modif = $player->getId() !== null;
             $entityManager->persist($player);
             $entityManager->flush();
-            $this->addFlash("success", ($modif) ? "La modification du joueur a été effectuée" : "L'ajout du joueur a été effectué");
+            $this->addFlash("success", ($modif) ? "La modification du joueur a été effectué" : "L'ajout du joueur a été effectué");
             return $this->redirectToRoute("admin");
         }
 

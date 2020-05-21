@@ -25,17 +25,21 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=5,max=10,minMessage="Au moins 5 caractères",maxMessage="max 10 caractères")
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\Regex(pattern="/^(?=.*[a-z])(?=.*\d).{6,}$/i", message="New password is required to be minimum 6 chars in length and to include at least one letter and one number.")
      */
     private $password;
-
+//  @Assert\Length(min=5,max=10,minMessage="Au moins 5 caractères",maxMessage="max 10 caractères")
     /**
      * @Assert\EqualTo(propertyPath="password", message="Les mdp ne correspondent pas")
-     * 
+     *
+     * @Assert\Regex(pattern="/^(?=.*[a-z])(?=.*\d).{6,}$/i", message="New password is required to be minimum 6 chars in length and to include at least one letter and one number.")
      */
     private $checkPassword;
 

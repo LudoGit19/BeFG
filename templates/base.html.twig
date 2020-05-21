@@ -11,7 +11,7 @@
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ------->
         
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
@@ -23,7 +23,7 @@
         <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="{{asset('css/main.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main1.css')}}">
         <!-- https://fontawesome.com/ -->
         <!-- // <script src="https://kit.fontawesome.com/d40561186c.js" crossorigin="anonymous"></script> -->
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -37,10 +37,20 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body> 
-         <div class="jumbotron bg-dark">
+         {# <div class="jumbotron bg-dark"> #}
             <h1 class="text-center text-info">
             {% block monTitre %}{% endblock %}</h1>
-        </div> 
+            {% for message in app.flashes('success') %}
+    <div class="container">
+        <div class="alert alert-success" align="center">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>    
+{% endfor %}
+        {# </div>  #}
      
 
         
