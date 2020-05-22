@@ -1,80 +1,89 @@
-<!-- https://bootsnipp.com/snippets/QMj6r -->
-<div class="nav-side-menu">
-    <div class="brand">BeForGame</div>
-    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-        <div class="menu-list">
-  
-            <ul id="menu-content" class="menu-content collapse out">
-                <li>
-                    <a href="{{ path('home') }}">
-                    <i class="fa fa-home fa-lg"></i>Home
-                    </a>
-                </li>
-
-                <li>
-                    {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')  %} 
-                    <a href="{{ path('contact') }}">
-                    <i class="fa fa-at fa-lg"></i>Contact</a>
-                    {% endif %} 
-                </li>
-
-                <ul>
-                    <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-                        <a href="#"><i class="fa fa-dashboard fa-lg"></i>Dashboard<span class="arrow"></span></a>
-                    </li>
-                    <ul class="sub-menu collapse" id="products">
-                        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')  %} 
-                        <li><a href="{{ path('players') }}">Players</a></li>
-                        <li><a href="{{ path('teams') }}">Teams</a></li>
-                        <li><a href="{{ path('events') }}">Events</a></li>
-                        <li><a href="{{ path('categories') }}">category</a></li>
-                        {% endif %} 
-                    </ul>
-                   
-  
-
-                <li data-toggle="collapse" data-target="#service" class="collapsed">
-                  <a href="#"><i class="fa fa-cogs fa-lg"></i> Admin <span class="arrow"></span></a>
-                </li>   
-                    <ul class="sub-menu collapse" id="service">
-                        <!-- <li data-toggle="collapse" data-target="#service2" class="collapsed"></li>
-                        <ul class="sub-menu2 collapse" id="service2"> -->
-                            {% if is_granted('ROLE_ADMIN') %} 
-                            <li><a href="{{ path('admin') }}">AdminPlayers</a></li>
-                        
-                            <li><a href="{{ path('events') }}">AdminEvents</a></li>
-                            {% endif %} 
-                       
-                        </ul>
-                    </ul>
-                </ul>    
+<!-- https://bootsnipp.com/snippets/nNX3a -->
 
 
-                <li data-toggle="collapse" data-target="#profile" class="collapsed">
-                  <a href="#"><i class="fa fa-user fa-lg"></i> Profile <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="profile">
-                    {% if not app.user %}
-                        <li><a href="{{ path('registration') }}">S'inscrire</a></li>
-                        <li><a href="{{ path('login') }}">Login</a></li>
-                    {% else %}  
-                        <li class="active"><a href="{{ path('logout') }}">Logout</a></li>
-                       
-                    {% endif %}
-                </ul>
+{# <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> #}
+<!------ Include the above in your HEAD tag ---------->
 
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
 
-                 <!-- <li>
-                  <a href="#">
-                  <i class="fa fa-user fa-lg"></i> Profile
-                  </a>
-                  </li> -->
+  <a class="navbar-brand" href="#"><img id="logo" src="{{ asset("images/other/logo.png") }}" alt="sport" height="30"></a>
+    {# <a class="navbar-brand" id="nameOfSite" href="{{ path('home') }}">BeForGame</a> #}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-                 <li>
-                  <a href="#">
-                  <i class="fa fa-users fa-lg"></i> Users
-                  </a>
-                </li>
-            </ul>
-     </div>
-</div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto p-2">
+        <li class="nav-item active m-2">
+            <a class="nav-link" href="{{ path('home') }}">
+                        <i class="fa fa-home fa-lg"></i>Home
+            <span class="sr-only">(current)</span>
+            </a>
+        </li>
+        <li class="nav-item m-2">
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')  %} 
+                <a class="nav-link" href="{{ path('contact') }}">
+                <i class="fa fa-at fa-lg"></i>Contact</a>
+            {% endif %} 
+        </li>
+
+        <li class="nav-item dropdown m-2">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-tachometer fa-lg"></i>Dashboard
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ path('players') }}" >Players</a>
+                        <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ path('teams') }}">Team</a>
+                    <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ path('events') }}">Events</a>
+                    <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ path('categories') }}">Category</a>
+            </div>
+        </li>
+    </ul>
+    <ul class="navbar-nav navbar-right">
+        <li class="nav-item dropdown m-2">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user"></i>Mon Compte
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% if not app.user %}
+                    <a class="dropdown-item" href="{{ path('registration') }}">S'inscrire</a>
+                        <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('login') }}">Login</a>
+                        {# <div class="dropdown-divider"></div> #}
+                {% else %}  
+                    <a class="dropdown-item" href="{{ path('logout') }}">Logout</a>
+                {% endif %}
+            </div>    
+        </li>
+
+        <li class="nav-item dropdown m-2">
+            {% if is_granted('ROLE_ADMIN') %} 
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-unlock" style="color: green"></i>Admin
+            </a>
+            {% else %}
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-lock" style="color: orange"></i>Admin
+            </a>
+            {% endif %}    
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% if is_granted('ROLE_ADMIN') %} 
+                    <a class="dropdown-item" href="{{ path('admin_players') }}">AdminPlayers</a>
+                           <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('admin_teams') }}">AdminTeams</a>
+                        <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('events') }}">AdminEvents</a>
+                {% endif %}    
+            </div>    
+        </li>
+    </ul>
+   
+   
+  </div>
+</nav>
+

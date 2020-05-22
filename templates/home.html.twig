@@ -21,7 +21,7 @@
                 <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
                 <link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                <link rel="stylesheet" href="{{asset('css/main1.css')}}">
+                <link rel="stylesheet" href="{{asset('css/main.css')}}">
                 <!-- https://fontawesome.com/ -->
                 <!-- // <script src="https://kit.fontawesome.com/d40561186c.js" crossorigin="anonymous"></script> -->
                 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,12 +38,10 @@
 
 {% block body %}
 
-<div class="container">
-    
-   
+<div class="container" id="mainHome">
     
     <div class=" overlay-image ">
-        <img class="image" src="{{ asset("images/other/ball_b&w.jpg") }}" alt="Nature">  
+        <img class="image" src="{{ asset("images/other/ball_b&w.jpg") }}" alt="sport">  
              <div class="subTitle">
                 <section class="mainBG">
                     <div class="jumbotron mainBG-txt mr0">
@@ -58,60 +56,56 @@
             </div>
     </div>       
     <!-- mainMenu avec 4 gros button -->
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <div class="row mbr-justify-content-center">
-    
-                <div class="col-lg-6 mbr-col-md-10" >
-
-                    <a href="{{ path('dashboard') }}" class="buttonMenu">                  
-                        <div class="ico-button">
-                            <i class="fa fa-dashboard fa-lg"></i>
-                        </div>
-                        <div class="text-button vcenter">
-                            <h2 class="title3">DashBoard</h2>
-                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                        </div>
-                    </a>                   
+  
+    <div class="row mbr-justify-content-center">
+        <div class="col-lg-6 mbr-col-md-10" >
+            <a href="{{ path('dashboard') }}" class="buttonMenu">                  
+                <div class="ico-button">
+                    <i class="fa fa-dashboard fa-lg"></i>
                 </div>
-                <div class="col-lg-6 mbr-col-md-10">
-                    <a href="{{ path('players') }}" class="buttonMenu">
-                        <div class="ico-button">
-                            <i class="fa fa-users fa-lg"></i>
-                        </div>
-                        <div class="text-button vcenter">
-                            <h2 class="title3">Ma Team</h2>
-                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                        </div>
-                    </a>
+                <div class="text-button vcenter">
+                    <h2 class="title3">DashBoard</h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                 </div>
-                <div class="col-lg-6 mbr-col-md-10">
-                    <a href="{{ path('contact') }}" class="buttonMenu">
-                        <div class="ico-button">
-                            <i class="fa fa-user fa-lg"></i>
-                            
-                        </div>
-                        <div class="text-button vcenter">
-                            <h2 class="title3">Contact</h2>
-                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-6 mbr-col-md-10">
-                    <a href="{{ path('events') }}" class="buttonMenu">
-                        <div class="ico-button">
-                            <i class="fa fa-calendar fa-lg"></i>
-                        </div>
-                        <div class="text-button vcenter">
-                            <h2 class="title3">Events</h2>
-                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-                        </div>
-                    </a>    
-                </div>
-            </div>
+            </a>                   
         </div>
-    </div>  
-</div>    
+        <div class="col-lg-6 mbr-col-md-10">
+            <a href="{{ path('players') }}" class="buttonMenu">
+                <div class="ico-button">
+                    <i class="fa fa-users fa-lg"></i>
+                </div>
+                <div class="text-button vcenter">
+                    <h2 class="title3">Ma Team</h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-6 mbr-col-md-10">
+            <a href="{{ path('contact') }}" class="buttonMenu">
+                <div class="ico-button">
+                    <i class="fa fa-user fa-lg"></i>
+                    
+                </div>
+                <div class="text-button vcenter">
+                    <h2 class="title3">Contact</h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-6 mbr-col-md-10">
+            <a href="{{ path('events') }}" class="buttonMenu">
+                <div class="ico-button">
+                    <i class="fa fa-calendar fa-lg"></i>
+                </div>
+                <div class="text-button vcenter">
+                    <h2 class="title3">Events</h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                </div>
+            </a>    
+        </div>
+    </div>
+</div>
+
           
 {% endblock %}
 

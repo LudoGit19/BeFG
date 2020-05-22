@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminPlayerController extends AbstractController
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/admin", name="admin_players")
      */
 
     public function index(PlayerRepository $repo, PaginatorInterface $paginatorInterface, Request $request)

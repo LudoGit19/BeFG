@@ -8,23 +8,23 @@ $(document).ready(function(){
     });
   });
 
-$(function(){
-  $('[data-toggle="tooltip"]').tooltip();
-  $(".side-nav .collapse").on("hide.bs.collapse", function() {                   
-      $(this).prev().find(".fa").eq(1).removeClass("fa-angle-right").addClass("fa-angle-down");
-  });
-  $('.side-nav .collapse').on("show.bs.collapse", function() {                        
-      $(this).prev().find(".fa").eq(1).removeClass("fa-angle-down").addClass("fa-angle-right");        
-  });
-})    
+// $(function(){
+//   $('[data-toggle="tooltip"]').tooltip();
+//   $(".side-nav .collapse").on("hide.bs.collapse", function() {                   
+//       $(this).prev().find(".fa").eq(1).removeClass("fa-angle-right").addClass("fa-angle-down");
+//   });
+//   $('.side-nav .collapse').on("show.bs.collapse", function() {                        
+//       $(this).prev().find(".fa").eq(1).removeClass("fa-angle-down").addClass("fa-angle-right");        
+//   });
+// })    
 
 
 
-// menu
-$("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
+// // menu
+// $("#menu-toggle").click(function(e) {
+//     e.preventDefault();
+//     $("#wrapper").toggleClass("toggled");
+//   });
   
 
 
@@ -71,3 +71,10 @@ $("#menu-toggle").click(function(e) {
 // });
 
 // fin test dual list  ####################################################################################################################################################################
+// jQuery(function($){
+//   $('.navbar-toggle').click(function(){
+//   $('.navbar-collapse').toggleClass('right');
+//   $('.navbar-toggle').toggleClass('indexcity');
+//   });
+// });
+  
