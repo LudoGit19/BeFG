@@ -2,20 +2,22 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
+use App\Entity\Player;
 use App\Entity\Team;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class TeamType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('imageFile', FileType::class, ['required'=>false])
             ->add('name')
-            ->add('image')
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name'

@@ -2,12 +2,16 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TeamRepository")
+ * @Vich\Uploadable
  */
 class Team
 {
@@ -29,7 +33,12 @@ class Team
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Player", mappedBy="team")
+     * @Vich\UploadableField(mapping="team_image", fileNameProperty="image")
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Player", mappedBy="team", orphanRemoval=true, cascade={"persist", "remove"})
      */
     private $joueurs;
 
@@ -65,7 +74,7 @@ class Team
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -114,4 +123,20 @@ class Team
 
         return $this;
     }
+
+    public function setImageFile(?File $imageFile = null): self
+    {
+        $this->imageFile = $imageFile;
+        
+        // if ($this->imageFile instanceof UploadedFile) {
+        //     $this->updated_at = new \DateTime('now');
+        // }
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
 }

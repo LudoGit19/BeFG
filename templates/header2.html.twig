@@ -8,7 +8,7 @@
 
 <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
 
-  <a class="navbar-brand" href="#"><img id="logo" src="{{ asset("images/other/logo.png") }}" alt="sport" height="30"></a>
+  <a class="navbar-brand" href="{{ path('home') }}"><img id="logo" src="{{ asset("images/other/logo.png") }}" alt="sport" height="30"></a>
     {# <a class="navbar-brand" id="nameOfSite" href="{{ path('home') }}">BeForGame</a> #}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,13 +34,17 @@
             <i class="fa fa-tachometer fa-lg"></i>Dashboard
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
                 <a class="dropdown-item" href="{{ path('players') }}" >Players</a>
                         <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ path('teams') }}">Team</a>
-                    <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ path('events') }}">Events</a>
-                    <div class="dropdown-divider"></div>
+            {% endif %}
+                        <div class="dropdown-divider"></div>
+            {% if is_granted('ROLE_ADMIN') %}        
+                    <a class="dropdown-item" href="{{ path('teams') }}">Team</a>
+                        <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ path('categories') }}">Category</a>
+            {% endif %}
             </div>
         </li>
     </ul>

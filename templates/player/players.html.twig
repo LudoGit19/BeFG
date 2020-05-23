@@ -50,9 +50,8 @@
                 {% if is_granted('ROLE_ADMIN') %}               
                     <a href="{{ path('admin_ajout_player') }}" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-plus fa-lg"></i> Add Player</a>
                 {% endif %} 
-                <tr>
-                    <th></th>
-                    {# <th>Photo</th> #}
+                <tr>   
+                    <th>Photo</th>
                     <th>Prénom</th>
                     <th>Nom</th>
                     <th>Catégorie</th>
@@ -60,20 +59,13 @@
                     <!-- <th>Role</th> -->
                     {% if is_granted('ROLE_ADMIN') %}
                     <th class="text-center">Action</th>
-                    {% endif %}
+                    {% endif %}     
                 </tr>
             </thead>
             <tbody id="myTable">
                 {%  for player in players %}
-
                     <tr>
-                        <td>
-                            <div class="ckbox">
-                                <input type="checkbox" id="checkbox1">
-                                <label for="checkbox1"></label>
-                            </div>
-                        </td>
-                        {# <td><img src="{{ asset('images/players/' ~ player.image) }}" class="perso_imgPlayer img-fluid"></td> #}
+                        <td><img src="{{ asset('images/players/' ~ player.image) }}" class="perso_imgPlayer img-fluid"></td>
                         {% if is_granted('ROLE_ADMIN') %}
                         <td><a href="{{ path('admin_modification_player', {'id' : player.id}) }}"><strong>{{ player.fname }}</strong></a></td>
                         {% else %}
@@ -90,7 +82,7 @@
                             <div class="row">
                                 <!-- <a class='btn btn-info btn-xs m-1' href="#"><span class="glyphicon glyphicon-edit"></span>Edit</a>  -->
                             
-                                <form method="POST" action="{{ path('admin_suppression_player', {'id' : player.id}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
+                                <form method="POST" action="{{ path('admin_suppression_player', {'id':player.id}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
                                     <input type="hidden" name="_method" value="delete"> 
                                     <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ player.id)}}"> 
                                     <button>

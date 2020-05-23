@@ -60,12 +60,12 @@ class AdminPlayerController extends AbstractController
             $entityManager->persist($player);
             $entityManager->flush();
             $this->addFlash("success", ($modif) ? "La modification du joueur a été effectué" : "L'ajout du joueur a été effectué");
-            return $this->redirectToRoute("admin");
+            return $this->redirectToRoute("admin_players");
         }
 
         return $this->render('admin/modifEtAjoutPlayer.html.twig', [
             "player" => $player,
-            "form"   => $form->createView()
+            "modifEtAjoutPlayerForm"   => $form->createView()
             // "isModification" => $player->getId() !== null
 
         ]);
@@ -84,7 +84,7 @@ class AdminPlayerController extends AbstractController
             $entityManager->remove($player);
             $entityManager->flush();
             $this->addFlash("success","La suppression a été effectuée");
-            return $this->redirectToRoute("admin");
+            return $this->redirectToRoute("admin_players");
         }
 
     }

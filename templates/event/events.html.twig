@@ -16,40 +16,39 @@
 
 <div class="container-fluid"> 
     <div class="table table-bordered text-info p-4">  
-        <p>Tapez quelque chose dans le champ de saisie pour rechercher dans le tableau par date</p>  
+        <p>Tapez quelque chose dans le champ de saisie pour rechercher dans le tableau par équipe</p>  
         <input id="myInput" type="text" placeholder="Search..">
-        <br><br>    
+    </div>
+</div> 
+<div class="container-fluid">  
+    <div class="table table-bordered text-info p-4">      
         <table class="table table-hover">
             <thead class="thead-light">
-                        
+                {% if is_granted('ROLE_ADMIN') %}     
                     <a href="#" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-calendar fa-lg"></i>  +</a>
-
+                 {% endif %} 
                 <tr>
-                    <th></th>
+                    <th>Team</th>
                     <th>Date</th>
                     <th>Evènements</th>
-                    {# <th>Lieu</th>                    #}
+                    <th>Lieu</th>
+                    {% if is_granted('ROLE_ADMIN') %}                    
                     <th class="text-center">Action</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody id="myTable">
                 {%  for event in events %}
-                    <tr>
-                        <td>
-                            <div class="ckbox">
-                                <input type="checkbox" id="checkbox1">
-                                <label for="checkbox1"></label>
-                            </div>
-                        </td>
-                        
+                    <tr>  
+                        {# <td>{{ team.name }}</td>    #}
+                        <td></td>                   
                         <td><a href="#"><strong>{{ event.DateCreated|date("m/d/Y") }}</strong></a></td>
                         <td>{{ event.name }}</td>
-                    
-                        <!-- <td>{{ event.name }}</td> -->
+                        <td></td>
+                        {% if is_granted('ROLE_ADMIN') %}
                         <td>
                             <div class="row">
                                 <!-- <a class='btn btn-info btn-xs m-1' href="#"><span class="glyphicon glyphicon-edit"></span>Edit</a>  -->
-                            
                                 <form method="POST" action="#" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
                                     <input type="hidden" name="_method" value="delete"> 
                                     <input type="hidden" name="_token" value="#"> 
@@ -59,7 +58,7 @@
                                 </form>
                             </div>
                         </td>
-                
+                        {% endif %}
                     </tr>
                 {% endfor %} 
             </tbody>     

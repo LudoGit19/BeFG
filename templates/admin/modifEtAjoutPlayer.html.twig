@@ -1,22 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Modification d'un player{% endblock %}
-{# {% block monTitre %}Player {{ player.lname }}{% endblock %} #}
+{% block monTitre %}Player{% endblock %}
 
 {% block body %}
 {% include "header2.html.twig" %}
 
 
 
-<div class="container-fluid"> 
+{# <div class="container-fluid"> 
+<div id="registreForm" class="mt-4 text-info">
     {{form_start(form)}}  
-     
-    {{form_widget(form)}}
+     <div class="row">
+        <div class="col-4  p-4 m-auto">
+        {{form_widget(form)}}
         <a href="{{ path('admin_players') }}" class="btn btn-primary">Retour</a>
-        <input type="submit" value="Valider" class="btn btn-success">
-       
+        <input type="submit" value="Valider" class="btn btn-success">   
     {{form_end(form)}}
+<div>    
 </div>    
-     
+      #}
+
+ <div class="container-fluid text-info"> 
+    {{ form_start(modifEtAjoutPlayerForm)}}
+        <div class="row">
+            <div class="col">{{ form_row(modifEtAjoutPlayerForm.imageFile) }}</div>
+        </div>
+        <div class="row">
+            <div class="col">{{ form_row(modifEtAjoutPlayerForm.fname) }}</div>
+            <div class="col">{{ form_row(modifEtAjoutPlayerForm.lname) }}</div>
+             <div class="col">{{ form_row(modifEtAjoutPlayerForm.phone) }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col">{{ form_row(modifEtAjoutPlayerForm.mail) }}</div>
+             <div class="col">{{ form_row(modifEtAjoutPlayerForm.yearOfBirth) }}</div>
+              <div class="col">{{ form_row(modifEtAjoutPlayerForm.team) }}</div>
+        </div>
+        <a href="{{ path('admin_players') }}" class="btn btn-primary m-2 p-2">Retour</a>
+        <input type="submit" value="Valider" class="btn btn-success m-2 p-2">   
+    {{ form_end(modifEtAjoutPlayerForm)}}
+</div>       
         
 {% endblock %}
