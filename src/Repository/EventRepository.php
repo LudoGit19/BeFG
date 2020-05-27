@@ -19,6 +19,23 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
+
+    
+    public function findOneByDateCreated($dateCreated): ?Event
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.dateCreated = :val')
+            ->setParameter('val', $dateCreated)
+            ->orderBy('e.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+        dd($dateCreated);
+
+    }
+
+
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */

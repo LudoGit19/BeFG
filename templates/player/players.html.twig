@@ -6,6 +6,8 @@
 {% block body %}
 {% include "header2.html.twig" %} 
 
+<a href="{{ path('players') }}" class="btn btn-primary m-2 p-2">yearOfBirth>2010</a> 
+
     {% for message in app.flashes('success') %}
         <div class="container">
             <div class="alert alert-success" align="center">
@@ -34,7 +36,13 @@
             </div>            
         {{ form_end (form) }} 
     </div> 
-</div>    
+</div>  
+
+
+
+
+
+
 
 <div class="container-fluid">  
     <div class="table table-bordered text-info p-4">   
@@ -45,18 +53,18 @@
 
 <div class="container-fluid">  
     <div class="table table-bordered text-info p-4">   
-        <table class="table table-hover">
+        <table id="sortTable" class="table table-hover">
             <thead class="thead-light">
                 {% if is_granted('ROLE_ADMIN') %}               
                     <a href="{{ path('admin_ajout_player') }}" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-plus fa-lg"></i> Add Player</a>
                 {% endif %} 
                 <tr>   
                     <th>Photo</th>
-                    <th>Prénom</th>
-                    <th>Nom</th>
-                    <th>Catégorie</th>
-                    <th>Année</th>
-                    <!-- <th>Role</th> -->
+                    <th onclick="sortTable(0)">Prénom</th>
+                    <th onclick="sortTable(1)">Nom</th>
+                    <th onclick="sortTable(2)">Catégorie</th>
+                    <th onclick="sortTable(3)">Année</th>
+                   
                     {% if is_granted('ROLE_ADMIN') %}
                     <th class="text-center">Action</th>
                     {% endif %}     
@@ -74,15 +82,14 @@
                         <td>{{ player.lname }}</td>
                         <td>{{ player.team.category.name }}</td>
 
-                        {# {{dump(player.team.category.name)}} #}
                         <td>{{ player.yearOfBirth }}</td>
-                        <!-- <td>{#{{ player.role }}#}</td> -->
+                   
                         {% if is_granted('ROLE_ADMIN') %}
                         <td>
                             <div class="row">
-                                <!-- <a class='btn btn-info btn-xs m-1' href="#"><span class="glyphicon glyphicon-edit"></span>Edit</a>  -->
+                               
                             
-                                <form method="POST" action="{{ path('admin_suppression_player', {'id':player.id}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
+                                <form method="POST" action="{{ path('admin_suppression_player', {'id':player.id}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression de {{ player.fname}} {{ player.lname}}?')">              
                                     <input type="hidden" name="_method" value="delete"> 
                                     <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ player.id)}}"> 
                                     <button>
@@ -100,7 +107,7 @@
     <div class="navigation">
         {{ knp_pagination_render(players) }}
     </div>
-</div> 
+</div>  
 
 
                

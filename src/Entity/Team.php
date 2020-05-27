@@ -47,6 +47,12 @@ class Team
      */
     private $category;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="teams")
+     */
+    private $events;
+
+
     public function __construct()
     {
         $this->joueurs = new ArrayCollection();
@@ -128,9 +134,9 @@ class Team
     {
         $this->imageFile = $imageFile;
         
-        // if ($this->imageFile instanceof UploadedFile) {
-        //     $this->updated_at = new \DateTime('now');
-        // }
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updated_at = new \DateTime('now');
+        }
         return $this;
     }
 
@@ -138,5 +144,19 @@ class Team
     {
         return $this->imageFile;
     }
+
+    public function getEvents(): ?Event
+    {
+        return $this->events;
+    }
+
+    public function setEvents(?Event $events): self
+    {
+        $this->events = $events;
+
+        return $this;
+    }
+
+  
 
 }

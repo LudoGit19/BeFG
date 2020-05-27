@@ -15,7 +15,7 @@ class EventFixtures extends Fixture
         // $manager->persist($product);
         
        
-       
+        
             
         $status = new Status();
         $status->setName("reporté"); 

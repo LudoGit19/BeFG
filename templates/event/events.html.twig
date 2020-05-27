@@ -13,6 +13,10 @@
         </div>
     {% endfor %}
 </div>    
+{# 
+<a href="{{ path('event_par_date', { (dateCreated): dateCreated}) }}" class="btn btn-primary m-2 p-2">Event par Date</a>
+
+{{dump(dateCreated) }}  #}
 
 <div class="container-fluid"> 
     <div class="table table-bordered text-info p-4">  
@@ -28,7 +32,7 @@
                     <a href="#" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-calendar fa-lg"></i>  +</a>
                  {% endif %} 
                 <tr>
-                    <th>Team</th>
+                    {# <th>Team</th> #}
                     <th>Date</th>
                     <th>Evènements</th>
                     <th>Lieu</th>
@@ -39,23 +43,27 @@
             </thead>
             <tbody id="myTable">
                 {%  for event in events %}
-                    <tr>  
-                        {# <td>{{ team.name }}</td>    #}
-                        <td></td>                   
+                    <tr> 
+                         
+                        {# <td>{{ event.name }}</td>   #}
+                        {# {{dump( event.teams) }} #}
+              
                         <td><a href="#"><strong>{{ event.DateCreated|date("m/d/Y") }}</strong></a></td>
                         <td>{{ event.name }}</td>
-                        <td></td>
+                        <td>{{ event.location.name }}</td> 
+                         {# {{ dump(event.location.adress) }} #}
+                       
                         {% if is_granted('ROLE_ADMIN') %}
                         <td>
                             <div class="row">
                                 <!-- <a class='btn btn-info btn-xs m-1' href="#"><span class="glyphicon glyphicon-edit"></span>Edit</a>  -->
-                                <form method="POST" action="#" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
+                                {# <form method="POST" action="#" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression {{event.name}}?')">              
                                     <input type="hidden" name="_method" value="delete"> 
                                     <input type="hidden" name="_token" value="#"> 
                                     <button>
                                         <i class="fa fa-trash fa-lg"></i>
                                     </button>
-                                </form>
+                                </form> #}
                             </div>
                         </td>
                         {% endif %}

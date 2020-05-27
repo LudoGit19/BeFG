@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminPlayerController extends AbstractController
 {
     /**
-     * @Route("/admin", name="admin_players")
+     * @Route("/admin/players", name="admin_players")
      */
 
     public function index(PlayerRepository $repo, PaginatorInterface $paginatorInterface, Request $request)
@@ -31,7 +31,7 @@ class AdminPlayerController extends AbstractController
             $repo->findAllPagination($searchPlayer), 
             $request->query->getInt('page', 1), /*page number*/
             10 /*limit per page*/
-        );;
+        );
         
         return $this->render('player/players.html.twig', [
             "players" => $players,
@@ -42,7 +42,7 @@ class AdminPlayerController extends AbstractController
     }
 
     /**
-     * @route("/admin/creation/player", name="admin_ajout_player")
+     * @route("/admin/player/creation", name="admin_ajout_player")
      * @Route("/admin/{id}", name="admin_modification_player", methods="GET|POST")
      */
 

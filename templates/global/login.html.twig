@@ -25,7 +25,7 @@
 </div>
 {% endif %}
 
-
+{# 
 <div class="container-fluid">   
     <div id="login-row" class="row justify-content-center align-items-center">
         <div id="login-column" class="col-md-6">
@@ -51,6 +51,36 @@
             </div>
         </div>
     </div>
+</div>     #}
+<div class="container-fluid m-4"> 
+    <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-column" class="col-md-6">
+ 
+            <form class="form-signin text-info" class="form" action="{{path('login')}}" method="post">
+            
+                <div class="form-label-group">
+                    <input type="text" required name="_username" class="form-control" placeholder="Username" value="{{lastUserName}}">
+                    <label for="username"></label>
+                </div>
+
+                <div class="form-label-group">
+                    <input type="password" required name="_password" class="form-control" placeholder="Password">
+                    <label for="Password"></label>
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <div id="register-link" class="text-right">
+                    <a href="{{ path('registration') }}" class="text-info">Register here</a>
+                </div>
+            
+            </form>
+        </div>    
+    </div>    
 </div>    
 
 

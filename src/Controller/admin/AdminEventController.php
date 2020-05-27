@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\admin;
 
 use App\Entity\Event;
 use App\Form\EventType;
@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class EventController extends AbstractController
+class AdminEventController extends AbstractController
 {
     /**
-     * @Route("/event", name="events")
+     * @Route("/admin/events", name="admin_events")
      */
     public function index(EventRepository $repository)
     {
@@ -26,7 +26,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event/{dateCreated}", name="event_par_date")
+     * @Route("/admin/event/{dateCreated}", name="event_par_date")
      */
     public function eventParDAte(EventRepository $repository, $dateCreated)
     {

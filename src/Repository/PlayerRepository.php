@@ -25,6 +25,7 @@ class PlayerRepository extends ServiceEntityRepository
         $req = $this->createQueryBuilder('p');
         if($searchPlayer->getMinYearOfBirth()) {// est-ce que ma recherche n'est pas vide
             $req = $req->andWhere('p.yearOfBirth >= :min')
+            ->orderBy('p.id', 'ASC')
             ->setParameter(':min', $searchPlayer->getMinYearOfBirth());            
         }
         if($searchPlayer->getMaxYearOfBirth()) {
@@ -34,6 +35,42 @@ class PlayerRepository extends ServiceEntityRepository
 
         return $req->getQuery();
     }
+
+    // public function findAllYearth()
+    // {
+    //     return $this->createQueryBuilder('p')
+    //     ->where('p.yearOfBirth = 2019 ')
+    //     ->getQuery()
+    //     ->getResult();
+
+    // }
+
+    //       public function findAllYearthOfBirth()
+    // {
+    //     return $this->createQueryBuilder('p')
+    //     ->where('p.yearOfBirth >=2010')
+    //     ->orderBy('p.yearOfBirth', 'DESC')
+    //     ->getQuery()
+    //     ->getResult();
+        
+
+    // }
+
+    // // Jointure 
+    // public function getHistory($users) {
+    //     $qb = $this->entityManager->createQueryBuilder();
+    //     $qb
+    //         ->select('a', 'u')
+    //         ->from('Credit\Entity\UserCreditHistory', 'a')
+    //         ->leftJoin('a.user', 'u')
+    //         ->where('u = :user')
+    //         ->setParameter('user', $users)
+    //         ->orderBy('a.created_at', 'DESC');
+    
+    //     return $qb->getQuery()->getResult();
+    // }
+
+
 }
 
     // public function findAllGreaterThanPrice($price): array
