@@ -61,7 +61,7 @@ class AppFixtures extends Fixture
             
         $events1 = new Event();
         $events1->setName("tournoi u11");
-        $events1->setDateCreated(new \DateTime());
+        $events1->setDateCreated(new \DateTime('07/06/2020'));
         $events1->setDuration(null);
         $events1->setStatus($status);
         $events1->setLocation($location1);
@@ -69,7 +69,7 @@ class AppFixtures extends Fixture
 
         $events2 = new Event();
         $events2->setName("match u11A");
-        $events2->setDateCreated(new \DateTime());
+        $events2->setDateCreated(new \DateTime('06/06/2020'));
         $events2->setDuration(null);
         $events2->setStatus($status);
         $events2->setLocation($location2);
@@ -77,7 +77,7 @@ class AppFixtures extends Fixture
 
         $events3 = new Event();
         $events3->setName("match u11B");
-        $events3->setDateCreated(new \DateTime());
+        $events3->setDateCreated(new \DateTime('05/06/2020'));
         $events3->setDuration(null);
         $events3->setStatus($status1);
         $events3->setLocation($location3);

@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Event;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Event|null find($id, $lockMode = null, $lockVersion = null)
@@ -21,17 +22,16 @@ class EventRepository extends ServiceEntityRepository
 
 
     
-    public function findOneByDateCreated($dateCreated): ?Event
+    public function orderByDate(DateTime $date): ?Event
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.dateCreated = :val')
-            ->setParameter('val', $dateCreated)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-        dd($dateCreated);
+        $query =  $this->createQueryBuilder('e')
+        ->andWhere('e.dateCreated > :date')
+        ->setParameter('date', $date)
+        ->orderBy('e.id', 'DESC')
+        ->getQuery()
+        ->getResult();
+        return $query->getResult();
+          
 
     }
 

@@ -25,10 +25,9 @@ class Event
      */
     private $name;
 
-    /**
-     * @Assert\DateTime
+     /**
+     *
      * @var string A "Y-m-d H:i:s" formatted value
-     * @ORM\Column(type="datetime")
      */
     private $dateCreated;
 
@@ -160,4 +159,17 @@ class Event
 
         return $this;
     }
+     /**
+     * Transform to string
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId();
+
+    }
+
+  
+
 }

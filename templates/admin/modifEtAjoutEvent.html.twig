@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification d'un évènement{% endblock %}
+{% block monTitre %}Event {{ event.name }}{% endblock %}
+
+{% block body %}
+{% include "header2.html.twig" %}
+
+ <div class="container-fluid text-info"> 
+    {{form_start(modifEtAjoutEventForm)}}
+        <div class="row">
+            <div class="col">{{ form_row(modifEtAjoutEventForm.name) }}</div>
+        </div>
+        <div class="row">
+            {# <div class="col">{{ form_row(modifEtAjoutEventForm.team) }}</div> #}
+            <div class="col">{{ form_row(modifEtAjoutEventForm.dateCreated) }}</div>
+        </div>
+        <a href="{{ path('admin_events') }}" class="btn btn-primary m-2 p-2">Retour</a>
+        <input type="submit" value="Valider" class="btn btn-success m-2 p-2">   
+    {{ form_end(modifEtAjoutEventForm)}}
+</div>    
+       
+{% endblock %}

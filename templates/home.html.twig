@@ -70,6 +70,7 @@
             </a>                   
         </div>
         <div class="col-lg-6 mbr-col-md-10">
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')  %} 
             <a href="{{ path('players') }}" class="buttonMenu">
                 <div class="ico-button">
                     <i class="fa fa-users fa-lg"></i>
@@ -79,6 +80,7 @@
                     <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                 </div>
             </a>
+        {% endif %}    
         </div>
         <div class="col-lg-6 mbr-col-md-10">
             <a href="{{ path('contact') }}" class="buttonMenu">
@@ -93,6 +95,7 @@
             </a>
         </div>
         <div class="col-lg-6 mbr-col-md-10">
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')  %} 
             <a href="{{ path('events') }}" class="buttonMenu">
                 <div class="ico-button">
                     <i class="fa fa-calendar fa-lg"></i>
@@ -101,7 +104,8 @@
                     <h2 class="title3">Events</h2>
                     <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                 </div>
-            </a>    
+            </a>
+        {% endif %}         
         </div>
     </div>
 </div>

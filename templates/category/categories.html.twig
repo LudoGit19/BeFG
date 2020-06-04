@@ -8,50 +8,46 @@
 {% include "header2.html.twig" %} 
 
 
-<div class="d-flex" id="wrapper">
-    <div id="page-content-wrapper">
-        <div class="container-fluid">          
-            <table class="table table-hover">
-                <thead class="thead-light">
-                                
-                        <a href="#" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-clipboard fa-lg"></i>  +</a>
-
-                    <tr>
-                        <th>catégorie</th>
-                    
-                        {# <th>Lieu</th>                    #}
-                        <th class="text-center">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="myTable">
-                    {%  for category in categories %}
-                    
-                        <tr>
-                    
+<div class="container-fluid">  
+    <div class="table table-bordered text-info p-4">   
+        <table id="sortTable" class="table table-hover">
+            <thead class="thead-light">
+                {% if is_granted('ROLE_ADMIN') %}                                
+                    <a href="#" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-clipboard fa-lg"></i>  +</a>
+                {% endif %} 
+                <tr>
+                    <th>catégorie</th>
+                    <th>Team</th>                   
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+                {%  for category in catAndTeam %}
+                {# {{ dd(catAndTeam ) }} #}
+                    <tr>                            
+                        <td><a href="#"><strong>{{ category.name }}</strong></a></td> 
+                        <td></td>
+                        <td>
+                            <div class="row">
+                                <!-- <a class='btn btn-info btn-xs m-1' href="#"><span class="glyphicon glyphicon-edit"></span>Edit</a>  -->
                             
-                            <td><a href="#"><strong>{{ category}}</strong></a></td>
-                            <td></td>
-                            <td>
-                                <div class="row">
-                                    <!-- <a class='btn btn-info btn-xs m-1' href="#"><span class="glyphicon glyphicon-edit"></span>Edit</a>  -->
-                                
-                                    <form method="POST" action="#" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
-                                        <input type="hidden" name="_method" value="delete"> 
-                                        <input type="hidden" name="_token" value="#"> 
-                                        <button>
-                                            <i class="fa fa-trash fa-lg"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                    
-                        </tr>
-                    {% endfor %} 
-                </tbody>     
-            </table>
-        </div>
+                                <form method="POST" action="#" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
+                                    <input type="hidden" name="_method" value="delete"> 
+                                    <input type="hidden" name="_token" value="#"> 
+                                    <button>
+                                        <i class="fa fa-trash fa-lg"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                
+                    </tr>
+                {% endfor %} 
+            </tbody>     
+        </table>
     </div>
-</div> 
+</div>
+
   
 
 

@@ -31,12 +31,12 @@ class AdminTeamController extends AbstractController
      * @Route("/admin/team/{id}", name="admin_modification_team", methods="GET|POST")
      */
 
-    public function modifEtAjoutTeam(Team $team, Request $request, EntityManagerInterface $entityManager){
+    public function modifEtAjoutTeam(Team $team = null, Request $request, EntityManagerInterface $entityManager){
 
         if(!$team) {
             $team = new Team();
         }
-       
+        // dd($team);
         $form = $this->createForm(TeamType::class, $team); // cette action lie le form ) l'objet $team    
         $form->handleRequest($request);
 

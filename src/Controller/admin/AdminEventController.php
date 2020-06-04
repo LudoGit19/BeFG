@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminEventController extends AbstractController
 {
     /**
-     * @Route("/admin/events", name="admin_events")
+     * @Route("/admin/event/events", name="admin_events")
      */
     public function index(EventRepository $repository)
     {
@@ -25,45 +25,56 @@ class AdminEventController extends AbstractController
         ]);
     }
 
+
+
+    
+
+
     /**
-     * @Route("/admin/event/{dateCreated}", name="event_par_date")
+     * @route("/admin/event/event/creation", name="admin_ajout_event")
+     * @route("/admin/event{id}", name="admin_modif_event", methods="GET|POST")
+     * 
      */
-    public function eventParDAte(EventRepository $repository, $dateCreated)
-    {
-        $events = $repository->findOneByDateCreated($dateCreated);
-        dd($dateCreated);
-        return $this->render('event/events.html.twig',[
-            "events" => $events,
+
+    public function modifEtAjoutEvent(Event $event = null, Request $request, EntityManagerInterface $entityManager){
+
+        if(!$event) {
+            $event = new Event();
+        }
+
+        $form = $this->createForm(EventType::class, $event); // cette action lie le form ) l'objet $player      
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){          
+            $modif = $event->getId() !== null;
+            $entityManager->persist($event);
+            $entityManager->flush();
+            $this->addFlash("success", ($modif) ? "La modification de l'évènement a été effectuée" : "L'ajout du joueur a été effectué");
+            return $this->redirectToRoute("dashboard");
+        }
+
+        return $this->render('admin/modifEtAjoutEvent.html.twig', [
+            "event" => $event,
+            "modifEtAjoutEventForm" => $form->createView()
+
         ]);
     }
+
     
-    // /**
-    //  * @route("/admin/modif/event", name="modif_event")
-    //  * 
-    //  */
+     /**
+     * @Route("/admin/{id}", name="admin_suppression_event", methods="delete")
+     */
 
-    // public function modifEvent(Event $event = null, Request $request, EntityManagerInterface $entityManager){
+    public function suppression(Event $event, Request $request, EntityManagerInterface $entityManager){
 
-    //     if(!$event) {
-    //         $event = new Event();
-    //     }
+        if($this->isCsrfTokenValid("SUP". $event->getId(),$request->get('_token'))){
+                   
+            $entityManager->remove($event);
+            $entityManager->flush();
+            $this->addFlash("success","La suppression a été effectuée");
+            return $this->redirectToRoute("admin_events");
+        }
 
-    //     $form = $this->createForm(EventType::class, $event); // cette action lie le form ) l'objet $player      
-    //     $form->handleRequest($request);
-
-    //     if($form->isSubmitted() && $form->isValid()){          
-    //         $modif = $event->getId() !== null;
-    //         $entityManager->persist($event);
-    //         $entityManager->flush();
-    //         $this->addFlash("success", ($modif) ? "La modification de l'évènement a été effectuée" : "L'ajout du joueur a été effectué");
-    //         return $this->redirectToRoute("admin");
-    //     }
-
-    //     return $this->render('admin/modifEvent.html.twig', [
-    //         "event" => $event,
-    //         "formEvent" => $form->createView()
-
-    //     ]);
-    // }
+    }
 
 }

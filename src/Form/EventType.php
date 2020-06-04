@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class EventType extends AbstractType
 {
@@ -15,13 +16,14 @@ class EventType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('team', EntityType::class,[
-                'class' => Team::class,
-                'choice_label' => 'name'
-            ])
-            ->add('dateCreated')
-            ->add('duration')
-            ->add('status')
+            ->add('teams', CollectionType::class)
+            ->add('dateCreated', DateType::class, [
+                'widget' => 'single_text',
+                // this is actually the default format for single_text
+                'format' => 'yyyy-MM-dd',
+            ]);
+            // ->add('duration')
+            // ->add('status')
         ;
     }
 

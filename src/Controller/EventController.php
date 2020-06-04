@@ -28,42 +28,14 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{dateCreated}", name="event_par_date")
      */
-    public function eventParDAte(EventRepository $repository, $dateCreated)
+    public function eventParDate(EventRepository $repository, $dateCreated)
     {
-        $events = $repository->findOneByDateCreated($dateCreated);
+        $events = $repository->orderByDate($dateCreated);
         dd($dateCreated);
         return $this->render('event/events.html.twig',[
             "events" => $events,
         ]);
     }
-    
-    // /**
-    //  * @route("/admin/modif/event", name="modif_event")
-    //  * 
-    //  */
-
-    // public function modifEvent(Event $event = null, Request $request, EntityManagerInterface $entityManager){
-
-    //     if(!$event) {
-    //         $event = new Event();
-    //     }
-
-    //     $form = $this->createForm(EventType::class, $event); // cette action lie le form ) l'objet $player      
-    //     $form->handleRequest($request);
-
-    //     if($form->isSubmitted() && $form->isValid()){          
-    //         $modif = $event->getId() !== null;
-    //         $entityManager->persist($event);
-    //         $entityManager->flush();
-    //         $this->addFlash("success", ($modif) ? "La modification de l'évènement a été effectuée" : "L'ajout du joueur a été effectué");
-    //         return $this->redirectToRoute("admin");
-    //     }
-
-    //     return $this->render('admin/modifEvent.html.twig', [
-    //         "event" => $event,
-    //         "formEvent" => $form->createView()
-
-    //     ]);
-    // }
+  
 
 }
