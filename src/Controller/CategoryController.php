@@ -16,8 +16,7 @@ class CategoryController extends AbstractController
         $categories = $repository->findAll();
         // dd($categories);
         return $this->render('category/categories.html.twig',[
-            "categories" => $categories,
-         
+            "categories" => $categories
         ]);
     }
 
@@ -31,8 +30,7 @@ class CategoryController extends AbstractController
         $catAndTeam = $repository->getCategoryWithTeam();
         // dd($catAndTeam );
         return $this->render('category/categories.html.twig',[
-            "catAndTeam " => $catAndTeam ,
-         
+            "catAndTeam" => $catAndTeam
         ]);
     }
 }
