@@ -25,17 +25,17 @@ class EventController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/event/{dateCreated}", name="event_par_date")
-     */
-    public function eventParDate(EventRepository $repository, $dateCreated)
-    {
-        $events = $repository->orderByDate($dateCreated);
-        dd($dateCreated);
-        return $this->render('event/events.html.twig',[
-            "events" => $events,
-        ]);
-    }
+    // /**
+    //  * @Route("/event/{dateCreated}", name="event_par_date")
+    //  */
+    // public function eventParDate(EventRepository $repository, $dateCreated)
+    // {
+    //     $events = $repository->orderByDate($dateCreated);
+    //     dd($dateCreated);
+    //     return $this->render('event/events.html.twig',[
+    //         "events" => $events,
+    //     ]);
+    // }
   
 
 }

@@ -12,8 +12,14 @@
             <div class="col">{{ form_row(modifEtAjoutEventForm.name) }}</div>
         </div>
         <div class="row">
+            <div class="col">{{ form_row(modifEtAjoutEventForm.teams) }}</div>
+        </div>
+        <div class="row">
             {# <div class="col">{{ form_row(modifEtAjoutEventForm.team) }}</div> #}
             <div class="col">{{ form_row(modifEtAjoutEventForm.dateCreated) }}</div>
+        </div>
+        <div class="row">
+            <div class="col">{{ form_row(modifEtAjoutEventForm.location)}}</div>
         </div>
         <a href="{{ path('admin_events') }}" class="btn btn-primary m-2 p-2">Retour</a>
         <input type="submit" value="Valider" class="btn btn-success m-2 p-2">   

@@ -49,8 +49,8 @@
                         {# <th>Team</th> #}
                         <th>Date</th>
                         <th>Type Events</th>
-                        <th>Team</th>
                         <th>Lieu</th>
+                        {# <th>Team</th> #}
                         {# <th>availability</th> #}
                         {% endif %} 
                         {% if is_granted('ROLE_ADMIN') %}                    
@@ -72,9 +72,10 @@
                               
                             {% endif %}
                             <td>{{ event.name }}</td>
-                            <td>{{ event.teams }}</td>
-                            {{dump(event.teams)}}
-                            <td>{{ event.location.name }}</td> 
+                            {# {{dump(event)}} #}
+                             {# <td>{{ event.name}}</td> #}
+                            {# {{dump(event.teams)}} #}
+                            <td>{{ event.location }}</td> 
                             {# <td></td> #}
                             {# {{ dump(event.location.adress) }} #}
                         

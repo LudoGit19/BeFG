@@ -49,8 +49,8 @@ class AdminEventController extends AbstractController
             $modif = $event->getId() !== null;
             $entityManager->persist($event);
             $entityManager->flush();
-            $this->addFlash("success", ($modif) ? "La modification de l'évènement a été effectuée" : "L'ajout du joueur a été effectué");
-            return $this->redirectToRoute("dashboard");
+            $this->addFlash("success", ($modif) ? "La modification de l'évènement a été effectuée" : "L'ajout de l'évènement a été effectué");
+            return $this->redirectToRoute("admin_events");
         }
 
         return $this->render('admin/modifEtAjoutEvent.html.twig', [
