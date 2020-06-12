@@ -6,6 +6,7 @@ use App\Entity\Team;
 use App\Entity\Event;
 use App\Form\TeamType;
 use App\Entity\Location;
+use App\Form\LocationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -19,20 +20,19 @@ class EventType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('teams', CollectionType::class, [
-                'entry_type' => TeamType::class,
-                'entry_options' => ['label' => true],
-            ])
-
+            ->add('teams', CollectionType::class, array(
+                'entry_type' => TeamType::class
+               
+            ), 
+        )  
             ->add('dateCreated', DateType::class, [
                 'widget' => 'single_text',
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',
             ])
-            ->add('location', EntityType::class,[
-                'class' => Location::class,
-                'choice_label' => 'name'
-            ] )
+            ->add('duration', DateType::class)
+            ->add('status')
+            ->add('location', LocationType::class)
             // ->add('status')
         ;
         // dd($builder);

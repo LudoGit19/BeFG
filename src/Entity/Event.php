@@ -26,8 +26,8 @@ class Event
     private $name;
 
      /**
-     *
-     * @var string A "Y-m-d H:i:s" formatted value
+     *@var string A "Y-m-d H:i:s" formatted value
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateCreated;
 
@@ -38,7 +38,7 @@ class Event
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="events", cascade="persist")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $status;
 
@@ -49,7 +49,7 @@ class Event
     private $teams;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Location", inversedBy="events")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Location", inversedBy="events", cascade={"persist"})
      */
     private $location;
 

@@ -25,11 +25,6 @@ class AdminEventController extends AbstractController
         ]);
     }
 
-
-
-    
-
-
     /**
      * @route("/admin/event/event/creation", name="admin_ajout_event")
      * @route("/admin/event{id}", name="admin_modif_event", methods="GET|POST")
@@ -62,7 +57,7 @@ class AdminEventController extends AbstractController
 
     
      /**
-     * @Route("/admin/{id}", name="admin_suppression_event", methods="delete")
+     * @Route("/admin/event{id}", name="admin_suppression_event", methods="delete")
      */
 
     public function suppression(Event $event, Request $request, EntityManagerInterface $entityManager){

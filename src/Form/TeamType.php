@@ -16,13 +16,24 @@ class TeamType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('imageFile', FileType::class, ['required'=>true])
+            ->add('imageFile', FileType::class, ['required'=>false])
             ->add('name')
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name'
             ])
         ;
+
+    //     ->add('category', ChoiceType::class, [
+    //         'choices' =>[
+    //             'u13' => 'u13',
+    //             'u11' => 'u11',
+    //             'u9' => 'u9',
+    //             'u7' => 'u7'
+    //         ],
+    //         'empty_value' => "choisir une category"
+    //     ])
+    // ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

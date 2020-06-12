@@ -19,7 +19,7 @@ class TeamController extends AbstractController
 {
    
     /**
-     * @Route("/team", name="teams")
+     * @Route("/member/team", name="teams")
      */
     public function index(TeamRepository $repository, PaginatorInterface $paginatorInterface, Request $request)
     {

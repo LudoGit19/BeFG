@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class PlayerController extends AbstractController
 {
     /**
-     * @Route("/players", name="players")
+     * @Route("/member/players", name="players")
      */
     public function index(PlayerRepository $repo, PaginatorInterface $paginatorInterface, Request $request)
     {
@@ -38,79 +38,11 @@ class PlayerController extends AbstractController
             "players" => $players,
             "form"     => $form->createView(),
             "admin"    => false
+           
         ]);
     }
 
-    // /**
-    //  * @Route("/players", name="select_by_fname")
-    //  */
-    // public function selectFname(TeamRepository $repository, $name)
-    // {
-    //     $events = $repository->findByFname($name);
-    //     dd($name);
-    //     return $this->render('event/events.html.twig',[
-    //         "events" => $events,
-    //     ]);
-    // }
-
-    // private $repository;
-
-    // public function __construct(Playerrepository $repository)
-    // {
-    //     $this->repository = $repository;
-    // }
-
-
-
-    // /**
-    //  * @Route("/players", name="players")
-    //  */
-    // public function selectYearthOfBirth(PlayerRepository $repository)
-    // {
-
-
-    //    $player = $repository->findAllYearthOfBirth();
-    //     // dd($player);
-     
-    //     return $this->render('player/players.html.twig', [
-    //         "players" => $player
-                   
-    //     ]);
-    // }
-
-    // LES METHODES MAGIQUES
-
-    // /**
-    //  * @Route("/players", name="players")
-    //  */
-    // public function selectYearthOfBirth(PlayerRepository $repository)
-    // {
-
-
-    //    $player = $repository->findByYearOfBirth(2004);
-    //     // dd($player);
-     
-    //     return $this->render('player/players.html.twig', [
-    //         "players" => $player
-                   
-    //     ]);
-    // }
-
-    // /**
-    //  * @Route("/players", name="players")
-    //  */
-    // public function ListTeamWithPlayers(PlayerRepository $repository)
-    // {
-
-
-    //    $listTeamPlayer= $repository->getTeamWithPlayer(Team::class);
-    //     dd($listTeamPlayer);
-     
-    //     return $this->render('player/players.html.twig', [
-    //         "listTeamPlayer" => $listTeamPlayer
-                   
-    //     ]);
-    // }
+   
 
 
 

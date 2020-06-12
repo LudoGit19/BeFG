@@ -46,13 +46,14 @@ class Player
     private $mail;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
 
      /**
      * @Vich\UploadableField(mapping="player_image", fileNameProperty="image")
+     *
      */
     private $imageFile;
 

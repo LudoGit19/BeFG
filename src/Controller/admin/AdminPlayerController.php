@@ -65,8 +65,8 @@ class AdminPlayerController extends AbstractController
 
         return $this->render('admin/modifEtAjoutPlayer.html.twig', [
             "player" => $player,
-            "modifEtAjoutPlayerForm"   => $form->createView()
-            // "isModification" => $player->getId() !== null
+            "modifEtAjoutPlayerForm"   => $form->createView(),
+            "isModification" => $player->getId() !== null
 
         ]);
     }

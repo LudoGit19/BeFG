@@ -1,30 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Modification d'un player{% endblock %}
-{% block monTitre %}Player {{player.fname}} {% endblock %}
-
+{% block monTitre %} 
+{% if isModification %}
+    Modification {{ player.fname}}
+{% else %}
+    Ajout d'un Player
+{% endif %}
+{% endblock %}
 {% block body %}
 {% include "header2.html.twig" %}
-
-
-
-{# <div class="container-fluid"> 
-<div id="registreForm" class="mt-4 text-info">
-    {{form_start(form)}}  
-     <div class="row">
-        <div class="col-4  p-4 m-auto">
-        {{form_widget(form)}}
-        <a href="{{ path('admin_players') }}" class="btn btn-primary">Retour</a>
-        <input type="submit" value="Valider" class="btn btn-success">   
-    {{form_end(form)}}
-<div>    
-</div>    
-      #}
-
- <div class="container-fluid text-info"> 
+<div class="container-fluid text-info"> 
     {{ form_start(modifEtAjoutPlayerForm)}}
         <div class="row">
+        {% if isModification %}
             <div class="col">{{ form_row(modifEtAjoutPlayerForm.imageFile) }}</div>
+        {% endif %}
         </div>
         <div class="row">
             <div class="col">{{ form_row(modifEtAjoutPlayerForm.fname) }}</div>

@@ -16,7 +16,7 @@ class PlayerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('imageFile', FileType::class, ['required'=>true])
+            ->add('imageFile', FileType::class, ['required'=>false])
             ->add('fname')
             ->add('lname')
             ->add('phone')

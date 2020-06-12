@@ -6,7 +6,6 @@ use App\Entity\Team;
 use App\Entity\Player;
 use App\Form\TeamType;
 use App\Repository\TeamRepository;
-
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,6 +22,7 @@ class AdminTeamController extends AbstractController
         // dd($teams);
         return $this->render('team/teams.html.twig',[
             "teams" => $teams,
+            "admin"    => true
         ]);
     }
 
@@ -45,23 +45,24 @@ class AdminTeamController extends AbstractController
             $entityManager->persist($team);
             $entityManager->flush();
             $this->addFlash("success", ($modif) ? "La modification de l'équipe a été effectué" : "L'ajout de l'équipe a été effectué");
-            return $this->redirectToRoute("dashboard");
+            return $this->redirectToRoute("admin_teams");
         }
 
         return $this->render('admin/modifEtAjoutTeam.html.twig', [
             "team" => $team,
-            "modifEtAjoutTeamForm"   => $form->createView()
+            "modifEtAjoutTeamForm"   => $form->createView(),
+            "isModification" => $team->getId() !== null
          
         ]);
     }
 
      /**
-     * @Route("/admin/team/team/{id}", name="admin_suppression_team", methods="delete")
+     * @Route("/admin/team/team/{name}", name="admin_suppression_team", methods="delete")
      */
 
     public function suppression(Team $team, Request $request, EntityManagerInterface $entityManager){
                 
-        if($this->isCsrfTokenValid("SUP". $team->getId(),$request->get('_token'))){
+        if($this->isCsrfTokenValid("SUP". $team->getName(),$request->get('_token'))){
                    
             $entityManager->remove($team);
             $entityManager->flush();

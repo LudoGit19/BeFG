@@ -14,110 +14,43 @@
         {% endfor %}   
 </div>   
 
-<div class="jumbotron">
-    <div class="container">
-        {{ form_start(formSearchTeam)}}
-            <div class="row no-gutters align-items-center text-center">
-                <div class="col p-1">            
-                    {{ form_row(formSearchTeam.nameOfTeam) }}
-                </div>
-                  <div class="col p-1">            
-                    <button class="btn btn-primary">Rechercher</button>
-                </div
-            </div>
-        {{ form_end(formSearchTeam) }}
-    </div>
-</div>
 
-
-{# {% if is_granted('ROLE_ADMIN') %}    #}
-{# <div class="container-fluid">      
-    <div class="table table-bordered text-info p-4">   
-        <p>Tapez quelque chose dans le champ de saisie pour rechercher dans le tableau par équipe</p>  
-        <input id="myInput" type="text" placeholder="Search..">
-    </div>
-</div>
-<div class="container-fluid">     
-    <div class="table table-bordered text-info p-4">
-        <table class="table table-hover">   
-            <thead class="thead-light">
-                
-                <a href="{{ path('admin_ajout_team') }}" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-clipboard fa-lg"></i>Add Teams</a>
-          
-                <tr>
-                    <th>photo</th>
-                    <th>Team</th>
-                    <th>category</th>
-                             
-                    <th class="text-center">Action</th>
-               
-                </tr>
-            </thead>
-            <tbody id="myTable">
-                {%  for team in teams %}
-                    <tr>
-                        <td><img src="{{ asset('images/teams/' ~ team.image) }}" class="perso_img img-fluid"></td>
-                      
-                        <td><a href="{{ path('admin_modification_team', {'id' : team.id}) }}"><strong>{{ team.name }}</strong></a></td>  
-                  
-                        <td>{{ team.category.name }}</td>
-                        <td>
-                            <div class="row">
-                                <form method="POST" action="{{ path('admin_suppression_team', {'id':team.id}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression ?')">              
-                                    <input type="hidden" name="_method" value="delete"> 
-                                    <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ team.id)}}"> 
-                                    <button>
-                                        <i class="fa fa-trash fa-lg"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                {% endfor %} 
-            </tbody>     
-        </table>
-    </div>
-</div>
-{% else %} 
-<div class="container">
-    <h2 class="text-center text-info">Vous n'avez pas les droits d'accès</h2>
-</div> #}
 <div class="container p-4 mb-4">
-    <main role="main">
-        <div class="album py-5 bg-light">
-        <a href="{{ path('admin_ajout_team') }}" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-plus fa-lg"></i> Add Team</a>
-            <div class="container">
-                <div class="row">
-                {%  for team in teams %}
-                    <div class="col-md-4 text-center mt-2">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-head m-4">
-                                <img src="{{ asset('images/teams/' ~ team.image) }}" id="perso_imgTeam">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text"><a href="{{ path('admin_modification_team', {'id' : team.id}) }}"><strong>{{ team.name }}</strong></p>
-                                <p>{{ team.category.name }}</p>
-                                <p>{{ team.events.name }}</p>
-                                {# {{dump(team.events.name)}} #}
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <form method="POST" action="{{ path('admin_suppression_team', {'id':team.id}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression {{ team.name }} ?')">              
-                                            <input type="hidden" name="_method" value="delete"> 
-                                            <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ team.id)}}"> 
-                                            <button>
-                                                <i class="fa fa-trash fa-lg"></i>
-                                            </button>
-                                        </form>
-                                        </div> 
+     <div class="container-fluid"> 
+        <main role="main">
+            <div class="album py-5 bg-light">
+            <a href="{{ path('admin_ajout_team') }}" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-plus fa-lg"></i> Add Team</a>
+                <div class="container">
+                    <div class="row">
+                    {%  for team in teams %}
+                        <div class="col-md-4 text-center mt-2">
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-head m-4">
+                                    <img src="{{ asset('images/teams/' ~ team.image) }}" id="perso_imgTeam">
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text"><a href="{{ path('admin_modification_team', {'id' : team.id}) }}"><strong>{{ team.name }}</strong></p>
+                                    <p>{{ team.category.name }}</p>                          
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <form method="POST" action="{{ path('admin_suppression_team', {'name':team.name}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression {{ team.name }} ?')">              
+                                                <input type="hidden" name="_method" value="delete"> 
+                                                <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ team.name)}}"> 
+                                                <button>
+                                                    <i class="fa fa-trash fa-lg"></i>
+                                                </button>
+                                            </form>
+                                            </div> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        {% endfor %}    
                     </div>
-                    {% endfor %}    
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>    
 </div>    
 {# {% endif %}   #}
 {% endblock %}

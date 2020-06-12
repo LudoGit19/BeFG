@@ -21,18 +21,4 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    
-
-     /**
-     * @Route("/category/find", name="categories")
-     */
-    public function SelectCategoryWithTeam(CategoryRepository $repository)
-    {
-        $catAndTeam = $repository->getCategoryWithTeam();
-        // dd($catAndTeam );
-        return $this->render('category/categories.html.twig',[
-            "catAndTeam " => $catAndTeam ,
-         
-        ]);
-    }
 }

@@ -48,17 +48,30 @@ class EventFixtures extends Fixture
         $status1->setName("ouvert");  
         $manager->persist($status1); 
 
-        $team1 = new Team();
-        $team1->setName("u9a");
-        $manager->persist($team1); 
+        $status2 = new Status();
+        $status2->setName("clos");  
+        $manager->persist($status2); 
+
+        // $team1 = new Team();
+        // $team1->setName("u9a");
+        // $manager->persist($team1); 
 
     
         $event1 = new Event();
         $event1->setName("entrainement interne");
+        $event1->setDateCreated(new \DateTime());
         $event1->setStatus($status1);
         $event1->setDuration(null);
         $event1->setLocation($location1);
         $manager->persist($event1);
+
+        $event2 = new Event();
+        $event2->setName("rose vs black");
+        $event2->setDateCreated(new \DateTime());
+        $event2->setStatus($status2);
+        $event2->setDuration(null);
+        $event2->setLocation($location1);
+        $manager->persist($event2);
 
 
 

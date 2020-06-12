@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class EventController extends AbstractController
 {
     /**
-     * @Route("/event", name="events")
+     * @Route("/member/event", name="events")
      */
     public function index(EventRepository $repository)
     {
@@ -26,7 +26,7 @@ class EventController extends AbstractController
     }
 
     // /**
-    //  * @Route("/event/{dateCreated}", name="event_par_date")
+    //  * @Route("/visitor/event/{dateCreated}", name="event_par_date")
     //  */
     // public function eventParDate(EventRepository $repository, $dateCreated)
     // {

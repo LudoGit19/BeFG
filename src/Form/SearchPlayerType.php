@@ -18,14 +18,15 @@ class SearchPlayerType extends AbstractType
             ->add('minYearOfBirth', IntegerType::class, [
                 "required" => false,
                 'attr' => [
-                    'placeholder' => 'de...'
+                    'placeholder' => 'de...',
+                   
                 ],
                 
             ])
             ->add('maxYearOfBirth', IntegerType::class, [
                 "required" => false,
                 'attr' => [
-                    'placeholder' => 'de...'
+                    'placeholder' => 'à...'
                 ],
             ])
         ;

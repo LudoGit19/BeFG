@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Modification de l'équipe{% endblock %}
-{% block monTitre %}Equipe{% endblock %}
+{% block monTitre %}
+{% if isModification %}
+    Modification {{ team.name }}
+{% else %}
+    Ajout d'une équipe
+{% endif %}
+{% endblock %}
 
 {% block body %}
 {% include "header2.html.twig" %}

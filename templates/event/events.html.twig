@@ -14,21 +14,6 @@
     {% endfor %}
 </div>    
 
-{# <div class="jumbotron">
-    <div class="container">
-        {{ form_start(formSearchTeam)}}
-            <div class="row no-gutters align-items-center text-center">
-                <div class="col p-1">            
-                    {{ form_row(formSearchTeam.nameOfTeam) }}
-                </div>
-                  <div class="col p-1">            
-                    <button class="btn btn-primary">Rechercher</button>
-                </div
-            </div>
-        {{ form_end(formSearchTeam) }}
-    </div>
-</div> #}
-
 
 <div class="container p-4 mb-4">
     <div class="container-fluid"> 
@@ -59,6 +44,8 @@
                     </tr>
                 </thead>
                 <tbody id="myTable">
+
+                
                     {%  for event in events %}
             
                         <tr> 
@@ -68,13 +55,15 @@
                             {% if is_granted('ROLE_ADMIN') %}
                             <td><a href="{{ path('admin_modif_event', {'id' : event.id}) }}"><strong>{{ event.DateCreated|date("m/d/Y") }}</strong></a></td>
                             {% else %}
-                            <td>{{ event.DateCreated|date("m/d/Y") }}</td>
+                            <td>{{ event.DateCreated|format_datetime('short', 'none', locale='fr') }}</td>
+                
                               
                             {% endif %}
                             <td>{{ event.name }}</td>
                             {# {{dump(event)}} #}
                              {# <td>{{ event.name}}</td> #}
                             {# {{dump(event.teams)}} #}
+                            {# <td>{{ event.status }}</td>  #}
                             <td>{{ event.location }}</td> 
                             {# <td></td> #}
                             {# {{ dump(event.location.adress) }} #}
