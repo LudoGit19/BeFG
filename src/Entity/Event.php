@@ -43,7 +43,7 @@ class Event
     private $status;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Team", mappedBy="events", cascade="all", orphanRemoval=true))
+     * @ORM\OneToMany(targetEntity="App\Entity\Team", mappedBy="events", cascade={"persist"}, orphanRemoval=true))
      *
      */
     private $teams;

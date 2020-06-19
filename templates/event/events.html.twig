@@ -52,19 +52,19 @@
                             
                             {# <td>{{ event.name }}</td>   #}
                             {# {{dump( event.teams) }} #}
+                            <td>
                             {% if is_granted('ROLE_ADMIN') %}
-                            <td><a href="{{ path('admin_modif_event', {'id' : event.id}) }}"><strong>{{ event.DateCreated|date("m/d/Y") }}</strong></a></td>
+                                <a href="{{ path('admin_modif_event', {'id' : event.id}) }}"><strong>{{ event.DateCreated|format_datetime('short', 'none', locale='FR') }}</strong></a>
                             {% else %}
-                            <td>{{ event.DateCreated|format_datetime('short', 'none', locale='fr') }}</td>
-                
-                              
+                                {{ event.DateCreated|format_datetime('short', 'none', locale='FR') }}
                             {% endif %}
+                            </td>
                             <td>{{ event.name }}</td>
                             {# {{dump(event)}} #}
                              {# <td>{{ event.name}}</td> #}
                             {# {{dump(event.teams)}} #}
                             {# <td>{{ event.status }}</td>  #}
-                            <td>{{ event.location }}</td> 
+                            <td>{{ event.location.name }}</td> 
                             {# <td></td> #}
                             {# {{ dump(event.location.adress) }} #}
                         

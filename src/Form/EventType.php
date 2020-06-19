@@ -20,11 +20,13 @@ class EventType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('teams', CollectionType::class, array(
-                'entry_type' => TeamType::class
-               
-            ), 
-        )  
+            ->add('teams', EntityType::class, [
+                'class' => Team::class,
+                'choice_label' => 'name', // equals $costTypeConnections->getDepartmentConnexion()->getType();
+                'expanded' => true, // will output a set of inputs instead of a select tag
+                'multiple' => true, // will output checkboxes instead of radio buttons
+                'required' => true, // unused as multiple is true
+            ])
             ->add('dateCreated', DateType::class, [
                 'widget' => 'single_text',
                 // this is actually the default format for single_text

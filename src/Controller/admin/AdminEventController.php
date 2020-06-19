@@ -40,7 +40,8 @@ class AdminEventController extends AbstractController
         $form = $this->createForm(EventType::class, $event); // cette action lie le form ) l'objet $player      
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){          
+        if($form->isSubmitted() && $form->isValid()){   
+            // dd($event);       
             $modif = $event->getId() !== null;
             $entityManager->persist($event);
             $entityManager->flush();
@@ -51,7 +52,6 @@ class AdminEventController extends AbstractController
         return $this->render('admin/modifEtAjoutEvent.html.twig', [
             "event" => $event,
             "modifEtAjoutEventForm" => $form->createView()
-
         ]);
     }
 

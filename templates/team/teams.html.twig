@@ -19,7 +19,9 @@
      <div class="container-fluid"> 
         <main role="main">
             <div class="album py-5 bg-light">
+            {% if is_granted('ROLE_ADMIN') %}    
             <a href="{{ path('admin_ajout_team') }}" class="btn btn-success btn-xs pull-left p-4 m-4"><i class="fa fa-plus fa-lg"></i> Add Team</a>
+            {% endif %}    
                 <div class="container">
                     <div class="row">
                     {%  for team in teams %}
@@ -29,8 +31,13 @@
                                     <img src="{{ asset('images/teams/' ~ team.image) }}" id="perso_imgTeam">
                                 </div>
                                 <div class="card-body">
+                                    {% if is_granted('ROLE_ADMIN') %}
                                     <p class="card-text"><a href="{{ path('admin_modification_team', {'id' : team.id}) }}"><strong>{{ team.name }}</strong></p>
-                                    <p>{{ team.category.name }}</p>                          
+                                    {% else %}
+                                    <p>{{ team.name }}</p> 
+                                    {% endif %} 
+                                    <p>{{ team.category.name }}</p>   
+                                     {% if is_granted('ROLE_ADMIN') %}                       
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <form method="POST" action="{{ path('admin_suppression_team', {'name':team.name}) }}" onsubmit="return confirm('êtes-vous sûr de confirmer la suppression {{ team.name }} ?')">              
@@ -42,6 +49,7 @@
                                             </form>
                                             </div> 
                                     </div>
+                                    {% endif %} 
                                 </div>
                             </div>
                         </div>
